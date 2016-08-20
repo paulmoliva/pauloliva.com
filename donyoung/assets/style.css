@@ -1,0 +1,29 @@
+#byBtn {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    position: fixed;
+    top: 5px;
+    right: 5px;
+}
+
+#quotetext {
+  padding: 17px;
+  margin: 10px;
+  /*position: fixed;
+  top: 20px;
+  right: 20px;*/
+}
+
+li, p{
+  color: white;
+  font-weight: bold;
+  font-size: 36px;
+  margin: 40px 0px 20px;
+
+}

@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+  <title>Alaska Political Gossip Generator</title>
+  <link rel="stylesheet" type="text/css" href="style.css" media="screen">
+  <head profile="http://www.w3.org/2005/10/profile">
+      <link rel="icon" type="image/jpeg" href="http://pauloliva.com/donyoung/assets/favicon.jpg" />
+  </head>
+  <!-- for Google -->
+  <meta name="description" content="How The Midnight Sun really gets its stories." />
+  <meta name="keywords" content="Alaska" />
+
+  <meta name="author" content="" />
+  <meta name="copyright" content="" />
+  <meta name="application-name" content="" />
+
+  <!-- for Facebook -->
+  <meta property="og:title" content="Alaska Political Gossip Generator" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://pauloliva.com/midnightsun/sun.jpg" />
+  <meta property="og:url" content="http://pauloliva.com/midnightsun" />
+  <meta property="og:description" content="How The Midnight Sun really gets its stories." />
+
+  <!-- for Twitter -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Alaska Political Gossip Generator" />
+  <meta name="twitter:description" content="How The Midnight Sun really gets its stories." />
+  <meta name="twitter:image" content="http://pauloliva.com/midnightsun/sun.jpg" />
+<body class="single single-post postid-3222 single-format-standard right-sidebar"><div class="hfeed site" id="page"><header class="site-header" id="masthead" role="banner"><a href="http://midnightsunak.com/" rel="home"><img width="3000" height="250" alt="" src="http://s209711.gridserver.com.s209711.gridserver.com/wp-content/uploads/2015/08/cropped-TheMidnightSun-header1.jpg"></a></header></div></body>
+<br>
+<div class = 'hentry'>
+  <div class = 'article-square'>
+  <h1 class = 'entry-title' id ='headline'>
+    First poll
+  </h1>
+  </div>
+</div>
+<div style="text-align:center; padding:5px;">
+<input type="submit" id="byBtn" value="Random Headline" onclick="change()"/>
+</div>
+
+<script>
+var subject_nouns = ['Mike Chenault', 'Ray Metcalfe', 'Senate Majority staffer', 'Berta Gardner', 'Governor Walker', 'House Majority staffer', 'Pete Kelly', 'Mike Dunleavy', 'Vince Beltrami', 'Jeff Landfield', 'Amy Demobski', 'Don Young', 'Lisa Murkowski', 'Mark Begich', 'Dan Sullivan', 'Legislative Aide', 'David Boyle', 'Michael Chambers', 'Musk Ox Caucus member', 'Ethan Berkowitz', 'Dustin Darden', 'Les Gara', 'Sarah Palin', 'Joe Miller', 'AKGOP Chairman', 'Oil industry lobbyist', 'Internet troll'];
+var verbs = ['slut shames', 'blames', 'suggests relocating capitol to','attacks', 'mulls primary run against', 'cozies up to', 'annoys', 'mulls gubernatorial run with', 'embarrasses', 'trolls', 'flirts with', 'admits to affair with', 'shmoozes', 'to debate', 'attempts to out-Alaska'];
+var places = ['on Dave Stieren Show', 'on Facebook', 'on blog', 'in email newsletter', 'on Twitter', 'on hunting trip', 'while fishing', 'at fundraiser', 'during committee meeting', 'in ADN comment section'];
+var cities = ['Anchorage', 'Bethel', 'Seattle', 'Mad Myrna\'s'];
+var groups = ['tourists', 'Natives', 'commercial fishermen', 'environmentalists', 'Democrats', 'immigrants', 'Muslims', 'Bernie Bros', 'gays', 'libertarians'];
+var problems = ['Fish War', 'budget crisis', 'climate change', 'Speedo-gate', 'legislative gridlock' ];
+
+
+function change(){
+	var randSubject = subject_nouns[Math.floor(Math.random() * subject_nouns.length)];
+  var randVerb = verbs[Math.floor(Math.random() * verbs.length)];
+  if (randVerb == 'mulls primary run against')
+    subject_nouns = ['Mike Chenault', 'Berta Gardner', 'Governor Walker', 'Pete Kelly', 'Mike Dunleavy', 'Don Young', 'Lisa Murkowski', 'Dan Sullivan', 'Musk Ox Caucus member', 'Les Gara'];
+  else if (randVerb == 'suggests relocating capitol to')
+    subject_nouns = cities;
+  var randRecipient = subject_nouns[Math.floor(Math.random() * subject_nouns.length)];
+  while(randSubject == randRecipient)
+    randRecipient = subject_nouns[Math.floor(Math.random() * subject_nouns.length)];
+  var randplace = places[Math.floor(Math.random() * places.length)];
+  if (randVerb == "embarrasses")
+    var newHeadline = 'Drunken ' + randSubject + ' ' + randVerb + ' ' + randRecipient + ' ' + randplace;
+  else if(randVerb == 'blames'){
+    var randGroup = groups[Math.floor(Math.random() * groups.length)];
+    var randProblem = problems[Math.floor(Math.random() * problems.length)];
+    var newHeadline = randSubject + ' ' + randVerb + ' ' + randGroup + ' for ' + randProblem;
+  }
+  else
+	  var newHeadline = randSubject + ' ' + randVerb + ' ' + randRecipient + ' ' + randplace;
+  document.getElementById('headline').innerHTML = newHeadline;
+  subject_nouns = ['Mike Chenault', 'Ray Metcalfe', 'Senate Majority staffer', 'Berta Gardner', 'Governor Walker', 'House Majority staffer', 'Pete Kelly', 'Mike Dunleavy', 'Vince Beltrami', 'Jeff Landfield', 'Amy Demobski', 'Don Young', 'Lisa Murkowski', 'Mark Begich', 'Dan Sullivan', 'Legislative Aide', 'David Boyle', 'Michael Chambers', 'Musk Ox Caucus member', 'Ethan Berkowitz', 'Dustin Darden', 'Les Gara', 'Sarah Palin', 'Joe Miller', 'AKGOP Chairman', 'Oil industry lobbyist', 'Internet troll'];
+}
+
+change();
+
+
+
+</script>
+
+<!--Google Analytics Tracker-->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54763128-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</html>

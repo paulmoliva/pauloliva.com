@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+  <title>Don Young Quote Generator</title>
+  <link rel="stylesheet" type="text/css" href="./assets/style.css" media="screen">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <head profile="http://www.w3.org/2005/10/profile">
+      <link rel="icon" type="image/jpeg" href="./assets/favicon.jpg" />
+  </head>
+  <!-- for Google -->
+  <meta name="description" content="Generate quotes from Alaska's most eloquent congressman." />
+  <meta name="keywords" content="Don Young Quotes" />
+
+  <meta name="author" content="" />
+  <meta name="copyright" content="" />
+  <meta name="application-name" content="" />
+
+  <!-- for Facebook -->
+  <meta property="og:title" content="Don Young Quote Generator" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://pauloliva.com/donyoung/assets/donhat.jpg" />
+  <meta property="og:url" content="http://pauloliva.com/donyoung" />
+  <meta property="og:description" content="Generate quotes from Alaska's most eloquent congressman." />
+
+  <!-- for Twitter -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Don Young Quote Generator" />
+  <meta name="twitter:description" content="Generate quotes from Alaska's most eloquent congressman." />
+  <meta name="twitter:image" content="http://s3.amazonaws.com/posttv-thumbnails-prod/thumbnails/54f8c407e4b0c96834972d65/donyoung_wolves.jpg" />
+</head>
+<body>
+<style>
+  body {
+    background: url("http://s3.amazonaws.com/posttv-thumbnails-prod/thumbnails/54f8c407e4b0c96834972d65/donyoung_wolves.jpg") no-repeat top center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+</style>
+  <div class="container-fluid">
+    <div class ="row">
+      <div class="col-xs-4 col-md-4"></div>
+      <div class="col-xs-4 col-md-4"></div>
+      <div class="col-xs-4 col-md-4">
+        <div class = "pull-right">
+          <div id = "quotediv">
+            <br><br>
+            <p id = "quotetext">
+
+            </p>
+            <img src = "./assets/don-young.png">
+            <input type="submit" id="byBtn" value="New Quote" onclick="change()"/>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+
+  <script>
+    var quotes = [
+      "I think they ought to rework Windows so that a device instantly turns on [without requiring boot-up time] and can run on batteries. To me, the operating system of the future is Windows.",
+      "If you want to drink by yourself, you may do it. But when you drink together, the possibility of harm becomes greater every day.",
+      "Congressmen who willfully take action during wartime that damage morale and undermine the military are saboteurs, and should be arrested, exiled or hanged,",
+      "Environmentalists are a self-centered bunch of waffle-stomping, Harvard-graduating, intellectual idiots, are not Americans, never have been Americans, never will be Americans.",
+      "There's always another day when who that bite will be killed, too. And I am very good at that.",
+      "Remember, the Arctic didn't have any ice. And the Northwest Passage was wide open. They were raising grapes in Scotland for God sakes, had a huge winery. Iceland was a farming community.",
+      "We wonder why we have got unrest in this country. It is because our government, in fact, has got out of hand and out of line, with the Endangered Species Act",
+      "If you can't eat it, can't sleep under it, can't wear it or make something from it, it's not worth anything.",
+      "I wrote my thesis on the benefits of war and very near got thrown out of college. But I can show you where the greatest advancement of mankind comes under stress and strain, not comfort.",
+      "There's nothing pretty about ice. Ice grows nothing. But we've got this in our minds that we've got to make everything cold.",
+      "If I have my way, I'm going to dissolve the Forest Service. They're in the business of harvesting trees and they're not harvesting trees, so why have them anymore?",
+      "We're the only creature God ever created that doesn't want to adapt. We want to make it stand still. And one thing that's constant is nature is constantly changing.",
+      "I'll call you anything I want to call you when you sit in that chair... You just be quiet,",
+      "My father had a ranch. We used to hire 50 or 60 wetbacks to pick tomatoes,",
+      "We're looking at staying as long as it takes this time, ... We're going down there basically to make a wage with our equipment.",
+      "The curb is intended to prevent that condition.",
+      "It is very likely that all other important missions of the Coast Guard and FEMA will become secondary to the effort to combat terrorism,",
+      "We remain concerned that Dell may push industry pricing levels lower, responding to actions by competitors, lowering everyone's operating profitability,",
+      "There are temperature comfort ranges. It's kind of a science and an art,",
+      "Two bull moose don't make a calf.",
+      "Move it outta the way!",
+      "Don't you ever touch me. Don't ever touch me. The last guy who touched me ended up on the ground dead.",
+      "I'd like to introduce (wolves) in your district. If I introduced them in your district, you wouldn't have a homeless problem anymore."
+
+    ]
+    //var randomNum = Math.floor((Math.random() * quotes.length));
+    document.getElementById("quotetext").innerHTML = "\"" + quotes[0] + "\"";
+    function change(){
+     var myNewQuote = "\"" + quotes[Math.floor((Math.random() * quotes.length))] + "\"";
+     var title = document.getElementById('quotetext');
+     title.innerHTML = myNewQuote;
+      }
+  </script>
+</body>

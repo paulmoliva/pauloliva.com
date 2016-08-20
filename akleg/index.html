@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+  <head>
+    <title>How much has legislative overtime cost Alaska?</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./assets/style.css" media="screen">
+    <script src="./assets/clock.js"></script>
+    <head profile="http://www.w3.org/2005/10/profile">
+        <link rel="icon" type="image/jpeg" href="./assets/favicon.jpg" />
+    </head>
+    <!-- for Google -->
+    <meta name="description" content="How much has legislative overtime cost Alaska?" />
+    <meta name="keywords" content="Alaska" />
+
+    <meta name="author" content="" />
+    <meta name="copyright" content="" />
+    <meta name="application-name" content="" />
+
+    <!-- for Facebook -->
+    <meta property="og:title" content="How much has legislative overtime cost Alaska?" />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="http://pauloliva.com/akleg/assets/money.jpg" />
+    <meta property="og:url" content="http://pauloliva.com/akleg" />
+    <meta property="og:description" content="How much has legislative overtime cost Alaska?" />
+
+    <!-- for Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="How much has legislative overtime cost Alaska?" />
+    <meta name="twitter:description" content="How much has legislative overtime cost Alaska?" />
+    <meta name="twitter:image" content="./assets/money.jpg" />
+  </head>
+  <body>
+    <style>
+      body {
+        background: url("http://www.alaskajournal.com/sites/alaskajournal.com/files/field/photos/alaska_pipeline_jens1.jpg") no-repeat top center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+      }
+  </style>
+    <h1>How much has the 2016 legislative overtime cost Alaska?</h1>
+    <div id="clockdiv">
+
+      <div>
+        <span class="seconds"></span>
+        <div class="smalltext">And counting...</div>
+      </div>
+      <p>
+      <!-- That's -->
+      </p>
+      <ul>
+        <li>$26,475 per day,</li>
+        <li>$1103.13 per hour,</li>
+        <li>$18.39 per minute,</li>
+        <li>30 cents per second.</li>
+      </ul>
+      <p class="text-center voffset4 lead cutetext">
+        <a href="http://www.alaskademocrats.org/" class="btn btn-lg btn-info frontpage">We can do better.</a>
+      </p>
+    </div>
+      <script>
+              /* Number.prototype.formatMoney = function(c, d, t){
+        var n = this,
+          c = isNaN(c = Math.abs(c)) ? 2 : c,
+          d = d == undefined ? "." : d,
+          t = t == undefined ? "," : t,
+          s = n < 0 ? "-" : "",
+          i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "",
+          j = (j = i.length) > 3 ? j % 3 : 0;
+         return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+        }; */
+
+        function getTimeRemaining(endtime) {
+        var t1 = new Date();
+        var t2 = new Date(endtime);
+        //var t = t2 - t1 -220000;
+        var t =  Date.now() - Date.parse(endtime);
+        var seconds = Math.floor((t / 1000) );
+        var minutes = Math.floor((t / 1000 / 60) % 60);
+        var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+        var days = Math.floor(t / (1000 * 60 * 60 * 24));
+        return {
+          'total': t,
+          'days': days,
+          'hours': hours,
+          'minutes': minutes,
+          'seconds': seconds
+        };
+        }
+
+        function initializeClock(id, endtime) {
+        var clock = document.getElementById(id);
+        //var daysSpan = clock.querySelector('.days');
+        //var hoursSpan = clock.querySelector('.hours');
+        //var minutesSpan = clock.querySelector('.minutes');
+        var secondsSpan = clock.querySelector('.seconds');
+
+        function updateClock() {
+          var t = getTimeRemaining(endtime);
+          var money = t.seconds * .30
+          //var displayMoney = money.formatMoney(2, '.', ',');
+          //daysSpan.innerHTML = t.days;
+          //hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+          //minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+          secondsSpan.innerHTML = ('$' + money.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,')).slice(-20);
+
+          if (t.total <= 0) {
+            clearInterval(timeinterval);
+          }
+        }
+
+        updateClock();
+        var timeinterval = setInterval(updateClock, 1000);
+        }
+
+        var deadline = new Date(2016, 04, 03, 12, 0, 0, 0)
+        initializeClock('clockdiv', deadline);
+      </script>
+      <!--Google Analytics Tracker-->
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-54763128-1', 'auto');
+        ga('send', 'pageview');
+
+      </script>
+
+  </body>

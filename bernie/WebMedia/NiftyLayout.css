@@ -1,0 +1,336 @@
+html,body{margin:0;padding:0}
+body{font: 85%/1.3 Tahoma,Arial,sans-serif;
+    text-align: center;background: #043196;padding-bottom:20px}
+p{margin-top:0}
+h1,h2,h3{font: normal normal 200% "Trebuchet MS",Arial,sans-serif}
+h1{font-zies:800%}
+h2{font-size:160%}
+h3{font-size:120%}
+
+h1 { 
+
+    font-family: Tahoma,Arial,sans-serif; 
+
+    font-size: 30px; 
+
+    font-weight: normal; 
+
+    color: #000000; 
+
+    } 
+
+
+
+
+div#header{width:100%;overflow:hidden;background: #043196}
+div#header h1,div#menu{width:770px;margin:0 auto;text-align:left}
+div#header h1{padding: 30px 0 10px;color: #FFF}
+
+ul#nav,ul#nav li{list-style-type:none;margin:0;padding:0}
+ul#nav{float:right;font-size: 80%}
+ul#nav li{float:left;margin-left: 3px;text-align: center}
+ul#nav a{float:left;width: 95px;padding: 5px 0;background: #369A3D;text-decoration:none;color: #FFC}
+ul#nav a:hover{background: #CDFFA1;color: #006A35}
+ul#nav li.activelink a,ul#nav li.activelink a:hover{background: #FFF;color: #003}
+
+div#container{width:1118px;margin:20px auto 10px;padding:10px 0 10px;text-align:left;background:#FFF}
+div#content{float:right;display:inline;width:903px;margin:0 10px 10px 0px}
+
+ul#intro,ul#intro li{list-style-type:none;margin:0;padding:0}
+ul#intro{width:100%;overflow:hidden;margin-bottom:20px}
+ul#intro li{float:left;width:180px;margin-right:10px;padding: 10px 0}
+li#mission{background: #E65714}
+li#services{background: #42B4AC}
+ul#intro li#more{margin-right:0;background: #7D63A9}
+ul#intro p,ul#intro h3{margin:0;padding: 0 10px}
+ul#intro h3{text-transform:uppercase;padding-bottom:3px;color: #FFF}
+
+div#content h2{margin: 10px 0;color: #007BC4}
+div.date{float:left;width: 4em;padding: 5px 0;background: #F1DDC4;color:#B0001E;
+    text-align:center;margin: 0 4px 4px 0;font-size: 80%;line-height:0.9}
+div.date span{display:block;font-size: 150%;font-weight:bold}
+
+div.comments div{background: #DAE6FE;margin-bottom:10px}
+div.comments p{padding: 10px;margin:0}
+div.comments div.odd{background:#DAE6FE}
+
+div#side{float:left;display:inline;width: 155px;background:#959595; margin:0 0 10px 10px}
+div#side p{margin:5px 0 10px;padding: 0 10px}
+div#side div{margin: 0 0 10px;padding: 10px 0}
+
+div#footer{clear:both;width:1089px;margin:0 10px 0;padding: 10px 0;
+    background: #586695;color: #FFF;text-align:center}
+div#footer p{margin:0}
+
+.floatright{float: right;margin: 0 0 10px 10px;}
+
+
+
+
+/* research links */
+a.research:link {font-size: 1em; font-weight:bold;text-decoration: none; color: #1C3971}
+a.research:visited {font-size: 1em; text-decoration: none; color: #1C3971}
+a.research:hover {font-size: 1em; text-decoration: underline; color:#F00808}
+a.research:active {font-size: 1em; text-decoration: underline; color:#F00808}
+
+/* headline links */
+a.headline:link {font-size: 2em; font-weight:bold;text-decoration: none; color: #1C3971}
+a.headline:visited {font-size: 2em; text-decoration: none; color: #1C3971}
+a.headline:hover {font-size: 2em; text-decoration: underline; color:#F00808}
+a.headline:active {font-size: 2em; text-decoration: underline; color:#F00808}
+
+
+
+
+/* econ links */
+a.econ:link {font-size: 1em; font-weight:bold; text-decoration: none; color: #1C3971}
+a.econ:visited {font-size: 1em; font-weight:bold; text-decoration: none; color: #1C3971}
+a.econ:hover {font-size: 1em; font-weight:bold; text-decoration: none; color: #993300}
+a.econ:active {font-size: 1em; font-weight:bold; text-decoration: none; color: #993300}
+
+/* footer links */
+a.footer:link {font-size: .9em; text-decoration: none; color: White}
+a.footer:visited {font-size: .9em; text-decoration: none; color: White}
+a.footer:hover {font-size: .9em; text-decoration: underline; color: rgb(217,213,141)}
+a.footer:active {font-size: .9em; text-decoration: none; color: White}
+
+
+
+
+
+
+/* Menus ... either for nav menu on left, or for building related links boxes on right--can be used for either! */
+
+div.menu {
+	text-align: left;
+	margin-left: 0px;/* controls width of panel */
+	margin-right: 0px;
+	line-height:1.1;
+	font-size:1em;
+}
+
+.menu ul{
+ 	list-style: none;
+	padding: 0px;
+	margin: 0px 6px 0px 6px; 
+	text-align: left;
+	background-color: #FFFFFF;
+	border-right: 1px solid #336699;
+	border-left: 1px solid #336699;		
+	line-height:1.1;
+	font-size:1em;
+}
+
+.menu li.first {
+	list-style: none;
+	padding-top: 6px;
+	padding-bottom:4px;
+	padding-right:4px;
+	padding-left:6px;
+	margin: 0px;
+	color: #FFFFFF;
+	text-decoration: none;
+	font-weight: bold;
+	background-color: #336699;
+	display: block;
+	line-height:1em;
+	font-size:1em;	
+} 
+
+  .menu li {
+	list-style: none;
+	display: block;	
+	padding: 2px 6px 4px 6px;
+	margin: 0px;
+	line-height: 1.2em; 
+	font-size: 1em;
+	border-bottom: 1px dotted #336699;
+} 
+
+.menu li a {
+	color: #cc5500;
+	text-decoration: none;
+}
+
+.menu li a:hover {
+	text-decoration: underline;
+	font-weight:bold;
+}
+
+ .menu li.arrive a {
+	color: #cc5500;
+	text-decoration: none; 
+	font-weight:bold;
+}
+
+.menu li.last {
+	border-top: 2px solid #336699; 
+	border-bottom: 2px solid #336699; 
+    height: 26px; 
+} 
+
+
+/* pop out left-hand nav menu */
+
+/**************** left-hand menu coding *****************/
+	
+	
+	
+	#menu, #menu ul { /* all lists */
+		
+		padding: 0;
+		margin-left: 3px;
+		list-style: none;
+		width : 101px;
+		}
+	
+	
+	
+	#menu li.arrow a {
+		 background-image: url(images/menuarrow.jpg); 
+ 		}
+	
+	#menu li ul { /* second-level lists */
+		position : absolute;
+		left: -999em;
+		margin-left : 139px;
+		margin-top : -28px;
+		margin-bottom : 20%;
+		
+	}
+	
+	#menu li ul ul { /* third-and-above-level lists */
+		  left: -999em;  
+	}
+	
+	#menu li a {
+		font-size: 1.1em;
+        font-weight: bold;
+		width: 129px;
+		display : block;
+		color : #cc5500; color:#1C3971;
+		text-decoration : none;
+		background-color: #ffffff;
+		border: 1px solid #ccc;
+		padding : 4px;
+		
+	}
+	
+	#menu li a:hover {
+		color: #cc5500;
+		background-color: #ccc;
+	}
+	
+	#menu li:hover ul ul, #menu li:hover ul ul ul, #menu li.sfhover ul ul, #menu li.sfhover ul ul ul {
+		left: -999em;
+	}
+	
+	#menu li:hover ul, #menu li li:hover ul, #menu li li li:hover ul, #menu li.sfhover ul, #menu li li.sfhover ul, 
+#menu li li li.sfhover ul { /* lists nested under hovered list items */
+		left: auto;
+	}
+	
+
+	
+
+/* submenu */
+
+
+div.submenu {
+	margin-top: 8px;
+	margin-bottom: 0px; 
+	margin-left: 0px;/* controls width of panel */
+	margin-right: 0px;
+	position: relative;
+}
+
+.submenu ul {
+	list-style:none;
+	display: inline;
+	padding: 4px 1px 4px 4px; 
+	/* padding: 0px;*/
+	margin-top:0px;
+	margin-left:0px;
+	margin-right:0px;
+	margin-bottom:4px;
+	width: 1300px;
+	}
+
+
+.submenu li {
+	padding: 2px 2px 2px 2px;
+	list-style: none;
+	display: inline;
+	font-size:.8em;
+	font-weight:bold;
+	margin-top:0px;
+	margin-left:0px;
+	margin-right:0px;
+	margin-bottom:4px;
+}
+			
+.submenu li a {
+	color: #336699;
+	text-decoration: none;
+	padding: 2px 2px 2px 2px;
+	border-left: 1px solid gray;
+	border-top: 1px solid gray;
+	border-bottom: 1px solid gray;
+	border-right: 1px solid gray;
+	background-color: #FFFFFF; 
+}
+
+.submenu li a:hover {
+	text-decoration: none;
+	color: #333333;
+	margin:0px;
+	/* padding: 2px 2px 2px 2px; */
+	background-color: #cccccc;
+	}
+	
+.submenu li.here a {
+	color: #FFFFFF;
+	text-decoration: none;
+	margin-top:0px; 
+	margin-left:2px;
+	margin-right:2px;
+	margin-bottom:4px;
+	padding: 2px 0px 2px 0px;
+	background-color: #336699;
+	border-left: 1px solid gray;
+	border-top: 1px solid gray;
+	border-bottom: 1px solid gray;
+	border-right: 1px solid gray; 
+	/* background-color: #FFFFFF; */
+}	
+	
+h3.Submenu {  /*  Each submenu's display title */
+	background: #336699; 
+	margin-left:0px;
+	padding-top: 2px; padding-bottom: 2px;
+	margin-top: 2px; margin-bottom: 2px;
+	border:1px solid gray;
+	text-indent:10px;
+
+}
+	
+h3.Submenu a{
+	color: #ffffff;
+	text-decoration: none;
+}
+
+h3.Submenu a:hover{
+	text-decoration: underline;
+	color:#333333;
+}
+
+#sidebar-l {
+			float: left;
+			width: 170px;
+			margin: 0;
+			margin-right: 25px;
+			padding: 5px;
+			background-color: #ccc; 
+			border: 1px solid black; 
+			text-align: left;
+		}
