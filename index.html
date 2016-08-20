@@ -83,7 +83,7 @@ body {
 
 </div>
 <div class = "row" id="about-row">
-  <div class = "col-md-4"><img src = "./assets/south-suicide.jpg" class = "img-responsive"></div>
+  <div class = "col-md-4"><img src = "./assets/glacier.jpg" class = "img-responsive"></div>
   <div class = "col-md-4" id="about">
     <h1>About Me</h1>
     <div id="Accordion1" class="Accordion" tabindex="0">
@@ -117,7 +117,23 @@ body {
 <div class = "row" id = "skills">
   <div class = "col-md-12">
     <h1>Skills</h1>
-    <h3>Ruby - Rails - SQL - HTML5 - CSS - JavaScript - jQuery - React - Flux - Git - Java - C++ - QT - GNU/Linux - Photoshop</h3>
+    <ul class = 'skill-list'>
+      <li><img class = 'skill-icon' src="https://keystrokecreative.com/images/technology/web/icon-ruby.png" alt="Ruby" />Ruby</li>
+      <li><img class = 'skill-icon' src="https://keystrokecreative.com/images/technology/framework/icon-ruby-rails.png" alt="" />Rails</li>
+      <li><img class = 'skill-icon' src="http://www.freeiconspng.com/uploads/sql-server-icon-png-29.png" alt="" />SQL</li>
+      <li><img class = 'skill-icon' src="https://keystrokecreative.com/images/technology/web/icon-html.png" alt="" />HTML5</li>
+      <li><img class = 'skill-icon' src="https://keystrokecreative.com/images/technology/web/icon-css.png" alt="" />CSS3</li>
+      <li><img class = 'skill-icon' src="https://keystrokecreative.com/images/technology/web/icon-javascript.png" alt="" />JavaScript</li>
+      <li><img class = 'skill-icon' src="https://keystrokecreative.com/images/technology/web/icon-jquery.png" alt="" />jQuery</li>
+      <li><img class = 'skill-icon' src="https://camo.githubusercontent.com/a414ed53a23a0d004d0ddd1981094f02b406b181/687474703a2f2f6a61766173637269707469736d616769632e6769746875622e696f2f6175692f6c6f676f732f72656163742e706e67" alt="" />React</li>
+      <li><img class = 'skill-icon' src="https://raw.githubusercontent.com/reactjs/redux/master/logo/logo.png" alt="" />Redux</li>
+      <li><img class = 'skill-icon' src="https://keystrokecreative.com/images/technology/server/icon-github.png" alt="" />Git</li>
+      <li><img class = 'skill-icon' src="https://keystrokecreative.com/images/technology/web/icon-java.png" alt="" />Java</li>
+      <li><img class = 'skill-icon' src="http://www.easyprogramming.net/logo/c.png" alt="" />C++</li>
+      <li><img class = 'skill-icon' src="http://icons.iconarchive.com/icons/alecive/flatwoken/512/Apps-Qt-icon.png" alt="" />QT</li>
+      <li><img class = 'skill-icon' src="./assets/linux.png" alt="" />GNU/Linux</li>
+      <li><img class = 'skill-icon' src="https://cdn2.iconfinder.com/data/icons/flurry-for-creative-suite/512/photoshop2.png" alt="" />Photoshop</li>
+    </ul>
   </div>
 </div>
 <div class = "row" id = "projects-row">
@@ -263,7 +279,7 @@ $(function() {
       target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
       if (target.length) {
         $('html, body').animate({
-          scrollTop: target.offset().top
+          scrollTop: target.offset().top - 40
         }, 1000);
         return false;
       }
