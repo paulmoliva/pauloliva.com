@@ -94,6 +94,7 @@ bottom: 0;
   margin-top: 3px;
 }
 
+
 .skill-list {
   list-style: none;
   display: flex;
@@ -164,9 +165,19 @@ bottom: 0;
 	padding: 5px;
   border-radius: 4%;
 }
+
+img.img-responsive{
+  margin: 0 auto;
+}
 #projects-row {
   color: white;
   font-size: 20px;
+}
+
+@media only screen and (max-width: 500px) {
+    #projects-row img{
+        background-color: lightblue;
+    }
 }
 
 #contacts-row img{
