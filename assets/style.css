@@ -3,6 +3,21 @@ body, h1, h2, h3, li {
   font-weight: 300;
 }
 
+#top-cover {
+  background: url("./assets/glacier.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+body {
+  background: url("./Optimized-bike.jpg") no-repeat 50% 65% fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 div.circle-avatar{
 /* make it responsive */
 max-width: 100%;
@@ -51,6 +66,16 @@ bottom: 0;
   text-align: center;
   /*font-weight: bold;*/
   color: white;
+}
+
+@media only screen and (min-width: 769px){
+  #about-row {
+    display: flex;
+    align-items: center;
+  }
+  #about-row .col-md-4 {
+    width: 33.3%;
+  }
 }
 
 #block2 h1 {
@@ -121,6 +146,8 @@ bottom: 0;
   padding: 1px;
 }
 
+
+
 /*.skill-icon:hover {
   background-color: rgba(255, 255, 255, 0.5);
   height: 75px;
@@ -174,11 +201,7 @@ img.img-responsive{
   font-size: 20px;
 }
 
-@media only screen and (max-width: 500px) {
-    #projects-row img{
-        background-color: lightblue;
-    }
-}
+
 
 #contacts-row img{
   background-color: rgba(250,250,250, 0.01);
@@ -274,6 +297,8 @@ p {
   text-decoration: underline;
 }
 
+
+
 .darkMenu ul{
  position:fixed;
  list-style-type: none;
@@ -291,6 +316,7 @@ p {
   margin-left: 0;
  text-align:center;
  min-width: 100%;
+ top: 0px;
 }
 
 
@@ -315,6 +341,61 @@ p {
 	box-shadow: none;
 	margin-bottom: -3px;
 	margin-top: 3px;
+}
+
+@media only screen and (max-width: 768px) {
+    .skill-list{
+        /*padding: 0 2.5%;*/
+        padding: 0;
+        justify-content: space-around;
+    }
+
+    .skill-list li {
+        margin: 5px 0;
+        width: 25%;
+        font-size: 100%;
+        font-weight: bold;
+    }
+    body {
+      background-image: url("./fabric.png");
+      background-color: #008c8c;
+    }
+    #images {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-content: center;
+    }
+
+    #block2 img{
+      width: 33%;
+      height: 33%;
+    }
+
+    #contacts-row #images img{
+      width: 50px;
+      height: 50px;
+    }
+    .underline:after{
+      content:"\A";
+      white-space: pre;
+    }
+
+    .mobile-photo {
+      background-image: url('./paul.jpg');
+      height: 230px;
+      width: 230px;
+      margin: 0 auto;
+      border-radius: 5px;
+    }
+
+    .darkMenu ul {
+      top: 0px;
+    }
+
+    #footer-row p {
+      font-size: 100%;
+    }
 }
 
 /*.darkMenu a:link {
