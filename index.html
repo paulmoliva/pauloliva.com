@@ -321,6 +321,9 @@ ga('send', 'pageview');
       $('#block2').css('text-shadow', '1px 1px whitesmoke');
       $('#block2 h1, #block2 h2').css('color', 'rgb(3, 91, 11)');
       $('#block2 h2').css('font-weight', 'bold');
+      i = document.querySelectorAll('#about-row img');
+      i[0].src="https://media.giphy.com/media/aO2xSELarYXfy/giphy.gif"
+      i[1].src="https://media.giphy.com/media/jfVHChLxzSHQs/giphy.gif"
       cool_button.text('Disable Chill Mode');
       cool_button.css('background-color', 'red');
   } else {
@@ -337,6 +340,9 @@ ga('send', 'pageview');
     $('#block2').css('text-shadow', 'none');
     $('#block2 h1, #block2 h2').css('color', 'whitesmoke');
     $('#block2 h2').css('font-weight', '500');
+    i = document.querySelectorAll('#about-row img');
+    i[0].src="./assets/glacier.jpg";
+    i[1].src="./assets/stpaul.jpg";
   }
 }
 </script>
