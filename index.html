@@ -39,14 +39,14 @@
   <meta name="twitter:image" content="http://pauloliva.com/assets/profile.jpg" />
 </head>
 <body>
-  /*<style media="screen">
+  <style media="screen">
   @media only screen and (max-width: 768px) {
     body {
       background-color: #3e6ce0;
       background-image: url("./assets/fabric.png");
       /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */    }
   }
-  </style>*/
+  </style>
 
 <a name="home"></a>
 <div class = "top-menu">
@@ -55,6 +55,7 @@
     <a href = "#skills"><li><button class = 'btn btn-primary'>Skills</button></li></a>
     <a href = "#projects-row"><li><button class = 'btn btn-primary'>Projects</button></li></a>
     <a href = "#contact"><li><button class = 'btn btn-primary'>Contact</button></li></a>
+    <li><button class = 'btn btn-success cool-button' onclick="coolMode()">Chill Mode</button></li>
   </ul>
 </div>
 <div class = "container-fluid">
@@ -298,6 +299,45 @@ $(function() {
 ga('create', 'UA-54763128-1', 'auto');
 ga('send', 'pageview');
 
+</script>
+
+<script type="text/javascript">
+  var cool = false;
+  var cool_button = $('.cool-button');
+  function coolMode(){
+    if (!cool){
+      cool = true;
+      var i=document.createElement("IFRAME");
+      i.width=0;i.height=0;i.src="http://rainymood.com";
+      var f=document.querySelector("#footer-row");
+      f.appendChild(i);
+      i=document.createElement("IFRAME");
+      i.width=423;
+      i.height=75;
+      i.src="https://www.youtube.com/embed/HMnrl0tmd3k?autoplay=1";
+      i.className = "bottom-player";
+      f.appendChild(i);
+      $('body').css('background', 'url("https://images3.alphacoders.com/892/89289.jpg") no-repeat 50% 65% fixed')
+      $('#block2').css('text-shadow', '1px 1px black');
+      $('#block2 h1, #block2 h2').css('color', 'rgb(3, 91, 11)');
+
+      cool_button.text('Disable Chill Mode');
+      cool_button.css('background-color', 'red');
+  } else {
+    cool = false;
+    i = document.querySelector('IFRAME');
+    f = document.getElementById('footer-row');
+    f.removeChild(i);
+    i = document.querySelector('IFRAME');
+    f.removeChild(i);
+    cool_button.text('Chill Mode');
+    cool_button.css('background-color', 'green');
+    $('body').css('background', 'url("./assets/Optimized-bike.jpg") no-repeat 50% 65% fixed')
+    $('body').css('background-size', 'cover');
+    $('#block2').css('text-shadow', 'none');
+    $('#block2 h1, #block2 h2').css('color', 'whitesmoke');
+  }
+}
 </script>
 
 </body>

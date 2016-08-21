@@ -18,6 +18,13 @@ body {
   background-size: cover;
 }
 
+.bottom-player {
+  position: fixed;
+  bottom: 5px;
+  left: auto;
+  right: auto;
+}
+
 div.circle-avatar{
 /* make it responsive */
 max-width: 100%;
@@ -75,6 +82,9 @@ bottom: 0;
   }
   #about-row .col-md-4 {
     width: 33.3%;
+  }
+  .cool-button {
+    background-color: green;
   }
 }
 
@@ -344,6 +354,9 @@ p {
 }
 
 @media only screen and (max-width: 768px) {
+    .cool-button{
+      display: none !important;
+    }
     .skill-list{
         /*padding: 0 2.5%;*/
         padding: 0;
