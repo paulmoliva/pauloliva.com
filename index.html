@@ -308,14 +308,11 @@ ga('send', 'pageview');
     if (!cool){
       cool = true;
       var i=document.createElement("IFRAME");
-      i.width=0;i.height=0;i.src="http://rainymood.com";
-      var f=document.querySelector("#footer-row");
-      f.appendChild(i);
-      i=document.createElement("IFRAME");
-      i.width=423;
-      i.height=75;
-      i.src="https://www.youtube.com/embed/HMnrl0tmd3k?autoplay=1";
+      i.width=1;
+      i.height=1;
+      i.src="https://www.youtube.com/embed/chhksy7wmWY?autoplay=1";
       i.className = "bottom-player";
+      var f=document.querySelector("#footer-row");
       f.appendChild(i);
       $('body').css('background', 'url("https://images3.alphacoders.com/892/89289.jpg") no-repeat 50% 65% fixed')
       $('#block2').css('text-shadow', '1px 1px whitesmoke');
@@ -330,8 +327,6 @@ ga('send', 'pageview');
     cool = false;
     i = document.querySelector('IFRAME');
     f = document.getElementById('footer-row');
-    f.removeChild(i);
-    i = document.querySelector('IFRAME');
     f.removeChild(i);
     cool_button.text('Chill Mode');
     cool_button.css('background-color', 'green');
