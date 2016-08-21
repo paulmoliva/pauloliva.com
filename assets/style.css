@@ -376,7 +376,7 @@ p {
       justify-content: center;
     }
     #block2 #images a{
-      margin: 2px 0;
+      margin: 2px 2px;
       width: 18%;
     }
 
@@ -387,6 +387,10 @@ p {
     .underline:after{
       content:"\A";
       white-space: pre;
+    }
+
+    #projects-row h2{
+      text-align: center;
     }
 
     .mobile-photo {
