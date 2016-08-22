@@ -68,12 +68,15 @@
 <div class = "row" id = "row2">
   <a name="aboutme"></a>
   <div class = "col-md-12" id = "block2">
+
     <h1>Paul Oliva</h1>
     <div class='mobile-photo'>
 
     </div>
+
     <h2>Software Engineer</h2>
     <h2>San Francisco, California</h2>
+
 
     <div id = "images">
       <a href = "http://github.com/paulmoliva"><img src="./assets/git.png" class = "logo"></a>
@@ -315,8 +318,8 @@ ga('send', 'pageview');
       var f=document.querySelector("#footer-row");
       f.appendChild(i);
       $('body').css('background', 'url("https://images3.alphacoders.com/892/89289.jpg") no-repeat 50% 65% fixed')
-      $('#block2').css('text-shadow', '1px 1px whitesmoke');
-      $('#block2 h1, #block2 h2').css('color', 'rgb(3, 91, 11)');
+      $('#block2').css('text-shadow', '1px 1px black');
+      $('#block2 h1, #block2 h2').css('color', 'firebrick');
       $('#block2 h2').css('font-weight', 'bold');
       i = document.querySelectorAll('#about-row img');
       i[0].src="https://media.giphy.com/media/aO2xSELarYXfy/giphy.gif"
@@ -339,6 +342,7 @@ ga('send', 'pageview');
     i[0].src="./assets/glacier.jpg";
     i[1].src="./assets/stpaul.jpg";
   }
+  $('#row2').toggleClass('title-class');
 }
 </script>
 

@@ -3,6 +3,10 @@ body, h1, h2, h3, li {
   font-weight: 300;
 }
 
+.title-class {
+  background-color: rgba(0,0,0,0.45)
+}
+
 #top-cover {
   background: url("./assets/glacier.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
