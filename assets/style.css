@@ -5,9 +5,12 @@ body, h1, h2, h3, li {
 
 .weather-div {
   position: fixed;
-  top: 4px;
-  right: 4px;
+  top: 44px;
+  right: 0px;
   background-color: rgba(117,0,22,0.66);
+  padding: 5px;
+  border-top-left-radius: 5%;
+  border-bottom-left-radius: 5%;
 }
 
 .temp, .description, .city{
@@ -371,6 +374,10 @@ p {
 }
 
 @media only screen and (max-width: 768px) {
+    .weather-div{
+      display: none;
+    }
+
     .cool-button{
       display: none !important;
     }
