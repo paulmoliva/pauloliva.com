@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="./polls.css" media="screen" title="no title" charset="utf-8">
+    <title>Polls</title>
+  </head>
+  <body>
+    <div class="polls">
+      <div id = 'candidate0-name'>
+
+      </div>
+      <div class = 'value' id = 'candidate0-value'>
+
+      </div>
+      <div id = 'candidate1-name'>
+
+      </div>
+      <div class = 'value' id = 'candidate1-value'>
+
+      </div>
+    </div>
+    <script type="text/javascript">
+      $( () => {
+        $.ajax(
+          {
+            url: 'http://www.realclearpolitics.com/epolls/json/5491_historical.js',
+            dataType: 'jsonp',
+            success: (data) => {
+              console.log(data);
+            }
+          }
+        )
+      }
+      );
+      function return_json(obj) {
+        console.log(obj);
+        let poll = obj.poll;
+        $h4 = $('<h3></h3>');
+        $h4.html(poll.title)
+        $('.polls').prepend($h4);
+        let data = poll.rcp_avg[0];
+        $h4 = $('<h4></h4>');
+        $h4.html(data.date);
+        $('.polls').append($h4);
+        let candidates = data.candidate;
+        for (let i = 0; i < candidates.length; i++){
+          let color;
+          color = (i === 0) ? "blue" : "red";
+          $(`#candidate${i}-name`)[0].innerHTML = (candidates[i].name);
+          $(`#candidate${i}-value`)[0].innerHTML = (candidates[i].value);
+          let el = $(`#candidate${i}-value`)[0];
+          $(el).css({'width': `${candidates[i].value * 2}px`, 'border-bottom-color': `${color}`});
+        }
+      };
+    </script>
+  </body>
+</html>
