@@ -105,6 +105,7 @@ bottom: 0;
   }
   .cool-button {
     background-color: green;
+    box-shadow: 1px 1px 1px 1px whitesmoke !important;
   }
 }
 
