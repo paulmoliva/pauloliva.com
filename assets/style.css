@@ -3,6 +3,18 @@ body, h1, h2, h3, li {
   font-weight: 300;
 }
 
+.weather-div {
+  position: fixed;
+  top: 4px;
+  right: 4px;
+  background-color: rgba(117,0,22,0.66);
+}
+
+.temp, .description, .city{
+  color: whitesmoke;
+  text-shadow: 1px 1px black;
+}
+
 .title-class {
   background-color: rgba(0,0,0,0.45)
 }
@@ -20,7 +32,7 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  
+
 }
 
 .bottom-player {
