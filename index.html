@@ -8,6 +8,7 @@
   <link href='https://fonts.googleapis.com/css?family=Merriweather:400,900' rel='stylesheet' type='text/css'>
   <link href="SpryAssets/SpryCollapsiblePanel.css" rel="stylesheet" type="text/css">
   <script src="SpryAssets/SpryCollapsiblePanel.js" type="text/javascript"></script>
+  <script src="./assets/pol.js" charset="utf-8"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   <link href="SpryAssets/SpryAccordion.css" rel="stylesheet" type="text/css">
   <script src="SpryAssets/SpryAccordion.js" type="text/javascript"></script>
@@ -142,6 +143,24 @@
 <div class = "row" id = "projects-row">
   <a name="projects"></a>
   <h1>Projects</h1>
+</div>
+<div class = "row" id = "projects-row">
+  <div class = "col-md-2">
+    <div class="polls" id="polls-root">
+
+    </div>
+    <script>
+      presidentialPoll();
+    </script>
+    <div style = "text-align: center;">
+      <a href = "https://github.com/paulmoliva/Pol.js" class = "git-link">View on Github</a>
+    </div>
+  </div>
+  <div class = "col-md-10">
+    <h2><span class = "underline">Pol.js</span> <span class = "italic">(Javscript)</span></h2>
+    <p>Pol.js is a lightweight JavaScript library that acts as a synthetic API to retrieve the most recent available political polling data from Real Clear Politics
+      and either render it to a webpage as HTML or return it as JSON. API calls accept optional parameters and can render data for state and/or national polling. The polling data in the box to the left is rendered with pol.js.</p>
+  </div>
 </div>
 <div class = "row" id = "projects-row">
   <div class = "col-md-2">
