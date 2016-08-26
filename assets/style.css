@@ -3,7 +3,9 @@ body, h1, h2, h3, li {
   font-weight: 300;
 }
 
-
+.poll-box {
+  display: flex
+}
 
 #poll0 h3 {
   display: none;
@@ -20,6 +22,7 @@ body, h1, h2, h3, li {
 .polls {
   background-color: rgba(0,0,117,0.55);
   border-radius: 5%;
+  width: 33%;
 }
 
 .polls h4{
@@ -119,6 +122,17 @@ bottom: 0;
 }
 
 @media only screen and (min-width: 769px){
+  .canvas-pc {
+    width: 66%;
+    height: 417px;
+  }
+
+  .canvas-mobile {
+    display: none;
+  }
+
+
+
   #about-row {
     display: flex;
     align-items: center;
@@ -397,8 +411,14 @@ p {
 	margin-top: 3px;
 }
 
+
+
 @media only screen and (max-width: 768px) {
-    .canvas {
+    .canvas-mobile {
+      width: 250px;
+      height: 500px;
+    }
+    .canvas-pc {
       display: none;
     }
 

@@ -8,7 +8,7 @@
   <link href='https://fonts.googleapis.com/css?family=Merriweather:400,900' rel='stylesheet' type='text/css'>
   <link href="SpryAssets/SpryCollapsiblePanel.css" rel="stylesheet" type="text/css">
   <script src="SpryAssets/SpryCollapsiblePanel.js" type="text/javascript"></script>
-  <script src="./assets/pol-chart.js" charset="utf-8"></script>
+  <script src="./assets/pol.js" charset="utf-8"></script>
   <script src="./assets/Chart.js" charset="utf-8"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   <link href="SpryAssets/SpryAccordion.css" rel="stylesheet" type="text/css">
@@ -158,11 +158,23 @@
     <p>Pol.js is a lightweight JavaScript library that acts as a synthetic API to retrieve the most recent available political polling data from Real Clear Politics
       and either render it to a webpage as HTML, return it as JSON, or draw an HTML5 canvas chart.
       API calls accept optional parameters and can render data for state and/or national polling.</p>
-      <div class = "canvas" style = "height: 300px; width: 600px; margin: 0 auto;">
-        <canvas id="canvas" width="300" height="150"></canvas>
-        <script type="text/javascript">
-        pollChart('four-way-national');
-        </script>
+      <div class="poll-box">
+        <div class="polls" id="polls-root">
+        </div>
+        <div class = "canvas-mobile">
+          <canvas id="canvas" width="150" height="300"></canvas>
+        </div>
+        <div class = "canvas-pc">
+          <canvas id="canvas" width="835" height="417"></canvas>
+        </div>
+          <script type="text/javascript">
+          landscape = window.orientation? window.orientation=='landscape' : true;
+          if(landscape && window.innerWidth<1900 && window.innerWidth > 768){
+              $('.canvas-mobile').empty();
+          }
+          pollChart('national');
+          presidentialPoll('four-way-national');
+          </script>
       </div>
   </div>
 </div>
