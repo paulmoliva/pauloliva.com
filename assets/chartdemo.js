@@ -62,4 +62,7 @@ function displayGeorgia() {
 
 function clearPoll() {
   $('#polls-root').empty();
+  $('.canvas-container iframe').each( (i, el) => (el.remove()) );
+  $('#canvas').remove(); // this is my <canvas> element
+  $('.canvas-container').append('<canvas id="canvas" width="300" height="125"><canvas>')
 }

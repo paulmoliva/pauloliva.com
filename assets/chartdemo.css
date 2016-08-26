@@ -3,9 +3,11 @@ body {
 }
 
 .sk-circle {
-  width: 33%;
-  position: relative;
-  margin: 100px auto;
+  width: 20%;
+  position: fixed;
+  top: 50px;
+  left: 20%;
+  z-index: 99;
 }
 
 .polls {
