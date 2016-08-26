@@ -147,20 +147,23 @@
 </div>
 <div class = "row" id = "projects-row">
   <div class = "col-md-2">
-    <div class="polls" id="polls-root">
-
-    </div>
-    <script>
-      presidentialPoll('four-way-national');
-    </script>
+    <a href = "https://github.com/paulmoliva/Pol.js"><img src = "./assets/poljslogo.png" class = "img-responsive"></a>
     <div style = "text-align: center;">
-      <a href = "https://github.com/paulmoliva/Pol.js" class = "git-link">View on Github</a>
+      <a href = "https://github.com/paulmoliva/Pol.js" class = "git-link">Github</a> |
+      <a href="./chart-demo.html" class = "git-link">Live Demo</a>
     </div>
   </div>
   <div class = "col-md-10">
     <h2><span class = "underline">Pol.js</span> <span class = "italic">(Javscript)</span></h2>
     <p>Pol.js is a lightweight JavaScript library that acts as a synthetic API to retrieve the most recent available political polling data from Real Clear Politics
-      and either render it to a webpage as HTML or return it as JSON. API calls accept optional parameters and can render data for state and/or national polling. The polling data in the box to the left is rendered with pol.js.</p>
+      and either render it to a webpage as HTML, return it as JSON, or draw an HTML5 canvas chart.
+      API calls accept optional parameters and can render data for state and/or national polling.</p>
+      <div class = "canvas" style = "height: 300px; width: 600px; margin: 0 auto;">
+        <canvas id="canvas" width="300" height="150"></canvas>
+        <script type="text/javascript">
+        pollChart('four-way-national');
+        </script>
+      </div>
   </div>
 </div>
 <div class = "row" id = "projects-row">

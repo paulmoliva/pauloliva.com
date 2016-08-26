@@ -398,6 +398,10 @@ p {
 }
 
 @media only screen and (max-width: 768px) {
+    .canvas {
+      display: none;
+    }
+
     .weather-div{
       display: none;
     }

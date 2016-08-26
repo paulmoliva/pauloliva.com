@@ -3,6 +3,7 @@ let pollData = {};
 let dates = [];
 var count = 0;
 function _make_request(pollID, callBack){
+
   const rcpURL = 'http://www.realclearpolitics.com/epolls/json/';
   const historical = '_historical.js';
   const requestURL = rcpURL + pollID + historical;
@@ -32,7 +33,7 @@ function htmlDisplay(obj){
   let poll = obj.poll;
 
   //_emptyTags();
-
+  $('.sk-circle').toggleClass('hidden');
   let $h3 = $('<h3></h3>');
   $h3.html(poll.title);
   const $root = $('#polls-root');
@@ -87,6 +88,7 @@ function asJSON(obj){
 }
 
 function presidentialPoll(state = 'national', format = 'html'){
+  $('.sk-circle').toggleClass('hidden');
   let id = _getPollID(state);
   if (format === 'html'){
     _make_request(id, htmlDisplay);
