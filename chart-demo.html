@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src="./assets/pol.js" charset="utf-8"></script>
+    <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jqu‌​ery-ui.min.js'></scr‌​ipt>
+    <script src="/../pol.js" charset="utf-8"></script>
     <script src="./assets/Chart.js" charset="utf-8"></script>
     <script src="./assets/chartdemo.js" charset="utf-8"></script>
     <link rel="stylesheet" type="text/css" href="./assets/chartdemo.css" media="screen">
@@ -24,8 +25,12 @@
       </div>
     </div>
     <script>
-      presidentialPoll('four-way-national');
-      pollChart('four-way-national');
+    $(
+      () => {
+        presidentialPoll('four-way-national');
+        pollChart('four-way-national');
+      }
+    );
     </script>
     <ul class = "buttons">
       <li class ="poll-button" onclick="displayNational()">2 Way National</li>
