@@ -176,6 +176,7 @@ bottom: 0;
   font-weight: bold;
   color: blue;
   font-size: 20px;
+  text-shadow: grey 1px 1px;
 }
 #skills h3{
   font-size: 22px;

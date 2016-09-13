@@ -57,7 +57,7 @@
     <a href = "#skills"><li><button class = 'btn btn-primary'>Skills</button></li></a>
     <a href = "#projects-row"><li><button class = 'btn btn-primary'>Projects</button></li></a>
     <a href = "#contact"><li><button class = 'btn btn-primary'>Contact</button></li></a>
-    <li><button class = 'btn btn-success cool-button' onclick="coolMode()">Chill Mode</button></li>
+    <!--<li><button class = 'btn btn-success cool-button' onclick="coolMode()">Chill Mode</button></li>-->
   </ul>
 </div>
 <div class = "container-fluid">
@@ -123,17 +123,17 @@
   <div class = "col-md-12">
     <h1>Skills</h1>
     <ul class = 'skill-list'>
-      <li><img class = 'skill-icon' src="https://keystrokecreative.com/images/technology/web/icon-ruby.png" alt="Ruby" />Ruby</li>
-      <li><img class = 'skill-icon' src="https://keystrokecreative.com/images/technology/framework/icon-ruby-rails.png" alt="" />Rails</li>
+      <li><img class = 'skill-icon' src="http://blogs.microsoft.co.il/blogs/shayf/WindowsLiveWriter/GettingStartedWithDynamicLanguages_B665/ruby_logo_2.png" alt="Ruby" />Ruby</li>
+      <li><img class = 'skill-icon' src="https://www.iconattitude.com/icons/open_icon_library/apps/png/256/development-ruby_on_rails.png" alt="" />Rails</li>
       <li><img class = 'skill-icon' src="http://www.freeiconspng.com/uploads/sql-server-icon-png-29.png" alt="" />SQL</li>
-      <li><img class = 'skill-icon' src="https://keystrokecreative.com/images/technology/web/icon-html.png" alt="" />HTML5</li>
-      <li><img class = 'skill-icon' src="https://keystrokecreative.com/images/technology/web/icon-css.png" alt="" />CSS3</li>
-      <li><img class = 'skill-icon' src="https://keystrokecreative.com/images/technology/web/icon-javascript.png" alt="" />JavaScript</li>
-      <li><img class = 'skill-icon' src="https://keystrokecreative.com/images/technology/web/icon-jquery.png" alt="" />jQuery</li>
+      <li><img class = 'skill-icon' src="http://www.freeiconspng.com/uploads/html5-icon-5.png" alt="" />HTML5</li>
+      <li><img class = 'skill-icon' src="./assets/css3.png" alt="" />CSS3</li>
+      <li><img class = 'skill-icon' src="http://www.softwareweb.com/static/icon/20120709-164039-Javascript.png" alt="" />JavaScript</li>
+      <li><img class = 'skill-icon' src="http://ethiopiarabb.com/assets/images/icon-jquery.png" alt="" />jQuery</li>
       <li><img class = 'skill-icon' src="https://camo.githubusercontent.com/a414ed53a23a0d004d0ddd1981094f02b406b181/687474703a2f2f6a61766173637269707469736d616769632e6769746875622e696f2f6175692f6c6f676f732f72656163742e706e67" alt="" />React</li>
       <li><img class = 'skill-icon' src="https://raw.githubusercontent.com/reactjs/redux/master/logo/logo.png" alt="" />Redux</li>
-      <li><img class = 'skill-icon' src="https://keystrokecreative.com/images/technology/server/icon-github.png" alt="" />Git</li>
-      <li><img class = 'skill-icon' src="https://keystrokecreative.com/images/technology/web/icon-java.png" alt="" />Java</li>
+      <li><img class = 'skill-icon' src="https://git-scm.com/images/logos/downloads/Git-Icon-Black.png" alt="" />Git</li>
+      <li><img class = 'skill-icon' src="http://img05.deviantart.net/fcb5/i/2011/355/9/2/java_flurry_icon_by_flakshack-d4jt21r.png" alt="" />Java</li>
       <li><img class = 'skill-icon' src="http://www.easyprogramming.net/logo/c.png" alt="" />C++</li>
       <li><img class = 'skill-icon' src="http://icons.iconarchive.com/icons/alecive/flatwoken/512/Apps-Qt-icon.png" alt="" />QT</li>
       <li><img class = 'skill-icon' src="./assets/linux.png" alt="" />Linux</li>
@@ -147,10 +147,34 @@
 </div>
 <div class = "row" id = "projects-row">
   <div class = "col-md-2">
+    <a href = "https://cloudsounds.io"><img src = "https://camo.githubusercontent.com/16f3af81dd254e522b94709f5adc40787e779d8f/687474703a2f2f7265732e636c6f7564696e6172792e636f6d2f636c6f75642d736f756e64732f696d6167652f75706c6f61642f635f7363616c652c775f3936302f76313437333434343033382f657a6769662e636f6d2d766964656f2d746f2d6769665f315f6830657564772e676966" class = "img-responsive"></a>
+    <div style = "text-align: center;">
+      <a href = "https://github.com/paulmoliva/CloudSounds" class = "git-link">View on Github</a> |
+      <a href = "https://cloudsounds.io" class = "git-link">Live</a>
+    </div>
+  </div>
+  <div class = "col-md-10">
+    <h2><span class = "underline">CloudSounds</span> <span class = "italic">(React/Redux, Rails)</span></h2>
+    <ul>
+      <li>Single-page full stack music app inspired by SoundCloud. It uses Ruby on Rails on the backend, a PostgreSQL database, and React.js with a Redux architectural framework on the frontend.</li>
+      <li>
+        Utilized geolocation and third-party weather API to retrieve current weather information and serve songs matching the mood of the current weather.
+      </li>
+      <li>
+        Forked and customized Audio.js library to integrate with React and add increased functionality such as ability to skip forward/back in playlist and adjust/mute audio volume form within player controls.
+      </li>
+      <li>
+        Integrated the Audio.js fork with WaveSurfer.js library&#39s off-label backend methods to store waveform visualization data in database for optimized rendering.
+      </li>
+    </ul>
+    </div>
+  </div>
+<div class = "row" id = "projects-row">
+  <div class = "col-md-2">
     <a href = "https://github.com/paulmoliva/Pol.js"><img src = "./assets/poljslogo.png" class = "img-responsive"></a>
     <div style = "text-align: center;">
       <a href = "https://github.com/paulmoliva/Pol.js" class = "git-link">Github</a> |
-      <a href="./chart-demo.html" class = "git-link">Live Demo</a>
+      <a href="http://poljs-react-demo.herokuapp.com/" class = "git-link">Live Demo</a>
     </div>
   </div>
   <div class = "col-md-10">
@@ -325,7 +349,7 @@ $(function() {
   });
 
   $.ajax({
-    url: 'http://api.openweathermap.org/data/2.5/weather?zip=94104,us&APPID=befdfe87af5677e6b00d6b3f493ee649&units=imperial',
+    url: 'http://api.openweathermap.org/data/2.5/weather?id=5391997&APPID=befdfe87af5677e6b00d6b3f493ee649&units=imperial',
     success: (data) =>{
       var weather = data;
       console.log(data);
