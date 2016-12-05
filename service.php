@@ -10,7 +10,7 @@ $db = substr($url["path"], 1);
 $conn = new mysqli($server, $username, $password, $db);
 $sql = "SELECT * FROM user";
 
-if ($results = mysqli_query($con, $sql)){
+if ($results = mysqli_query($conn, $sql)){
     $resultArray = array();
     $tempArray = array();
 
@@ -21,5 +21,5 @@ if ($results = mysqli_query($con, $sql)){
 
     echo json_encode($resultArray);
 }
-mysqli_close($con);
+mysqli_close($conn);
 ?>
