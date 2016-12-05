@@ -14,7 +14,7 @@ if ($results = mysqli_query($con, $sql)){
     $resultArray = array();
     $tempArray = array();
 
-    while ($row = results->fetch_object()) {
+    while ($row = $results->fetch_object()) {
         $tempArray = $row;
         array_push($resultArray, $tempArray);
     }
