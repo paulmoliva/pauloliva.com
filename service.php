@@ -6,12 +6,20 @@ $username = $url["user"];
 $password = $url["pass"];
 $db = substr($url["path"], 1);
 
-$resultArray = array();
-array_push($resultArray, $server);
-array_push($resultArray, $username);
-array_push($resultArray, $password);
-array_push($resultArray, $db);
-echo json_encode($resultArray);
 
 $conn = new mysqli($server, $username, $password, $db);
+$sql = "SELECT * FROM users";
+
+if ($results = mysqli_query($con, $sql)){
+    $resultArray = array();
+    $tempArray = array();
+
+    while ($row = results->fetch_object()) {
+        $tempArray = $row;
+        array_push($resultArray, $tempArray);
+    }
+
+    echo json_encode($resultArray);
+}
+mysqli_close($con);
 ?>
