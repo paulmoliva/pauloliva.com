@@ -6,7 +6,7 @@ $username = $url["user"];
 $password = $url["pass"];
 $db = substr($url["path"], 1);
 
-$resultArray = array()
+$resultArray = array();
 array_push($resultArray, $server);
 array_push($resultArray, $username);
 array_push($resultArray, $password);
