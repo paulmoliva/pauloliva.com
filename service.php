@@ -8,7 +8,7 @@ $db = substr($url["path"], 1);
 
 
 $conn = new mysqli($server, $username, $password, $db);
-$sql = "SELECT * FROM users";
+$sql = "SELECT * FROM user";
 
 if ($results = mysqli_query($con, $sql)){
     $resultArray = array();
