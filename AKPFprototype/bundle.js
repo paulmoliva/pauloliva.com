@@ -9631,6 +9631,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var google = window.google;
+
 // we need to provide a center coordinate for our map, this is SF
 var mapCenter = { lat: 61.2181, lng: -149.8003 };
 
@@ -9714,7 +9716,8 @@ var Map = function (_React$Component) {
       });
 
       var infowindow = new google.maps.InfoWindow({
-        content: 'PEAKS Score: ' + burritoPlace.score
+        content: 'Name: ' + burritoPlace.name + ' PEAKS Score: ' + burritoPlace.score,
+        maxWidth: 200
       });
 
       // when the marker is clicked on, alert the name
