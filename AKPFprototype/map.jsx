@@ -18,6 +18,13 @@ class Map extends React.Component {
   constructor(props) {
     super(props);
     this.addBurritoPlace = this.addBurritoPlace.bind(this);
+    this.state = {
+      activeSchool: {
+        name: '',
+        score: ''
+      },
+      openWindow: null
+    };
   }
 
   componentDidMount() {
@@ -84,7 +91,14 @@ class Map extends React.Component {
 
     // when the marker is clicked on, alert the name
     marker.addListener('click', () => {
+      if(this.state.openWindow) {
+        this.state.openWindow.close();
+      }
+      this.state.openWindow = infowindow;
       infowindow.open(this.map, marker);
+      this.setState({
+        activeSchool: burritoPlace
+      });
     });
   }
 
@@ -109,6 +123,15 @@ class Map extends React.Component {
     });
   }
 
+  displaySchoolStats() {
+    return (
+      <div className="school-display">
+          <p>{this.state.activeSchool.name}</p>
+          <p>{this.state.activeSchool.score}</p>
+      </div>
+    );
+  }
+
   render() {
     /*
      * the div that will become the map is just an empty div
@@ -118,12 +141,17 @@ class Map extends React.Component {
      * or else it won't be visible!
      */
     return (
-      <div>
+      <div className="container">
         <span>MAP DEMO</span>
-        <div id='map' ref='map'/>
-        <p>
-          PEAKS Scores prototype for Alaska Policy Forum
-        </p>
+        <div className="flex-row">
+          <div>
+            <div id='map' ref='map'/>
+            <p>
+              PEAKS Scores prototype for Alaska Policy Forum
+            </p>
+          </div>
+          {this.displaySchoolStats.bind(this)()}
+        </div>
       </div>
     );
   }

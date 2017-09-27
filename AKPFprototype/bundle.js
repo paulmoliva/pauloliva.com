@@ -9650,6 +9650,13 @@ var Map = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (Map.__proto__ || Object.getPrototypeOf(Map)).call(this, props));
 
     _this.addBurritoPlace = _this.addBurritoPlace.bind(_this);
+    _this.state = {
+      activeSchool: {
+        name: '',
+        score: ''
+      },
+      openWindow: null
+    };
     return _this;
   }
 
@@ -9722,7 +9729,14 @@ var Map = function (_React$Component) {
 
       // when the marker is clicked on, alert the name
       marker.addListener('click', function () {
+        if (_this2.state.openWindow) {
+          _this2.state.openWindow.close();
+        }
+        _this2.state.openWindow = infowindow;
         infowindow.open(_this2.map, marker);
+        _this2.setState({
+          activeSchool: burritoPlace
+        });
       });
     }
   }, {
@@ -9744,6 +9758,24 @@ var Map = function (_React$Component) {
       });
     }
   }, {
+    key: 'displaySchoolStats',
+    value: function displaySchoolStats() {
+      return _react2.default.createElement(
+        'div',
+        { className: 'school-display' },
+        _react2.default.createElement(
+          'p',
+          null,
+          this.state.activeSchool.name
+        ),
+        _react2.default.createElement(
+          'p',
+          null,
+          this.state.activeSchool.score
+        )
+      );
+    }
+  }, {
     key: 'render',
     value: function render() {
       /*
@@ -9755,17 +9787,26 @@ var Map = function (_React$Component) {
        */
       return _react2.default.createElement(
         'div',
-        null,
+        { className: 'container' },
         _react2.default.createElement(
           'span',
           null,
           'MAP DEMO'
         ),
-        _react2.default.createElement('div', { id: 'map', ref: 'map' }),
         _react2.default.createElement(
-          'p',
-          null,
-          'PEAKS Scores prototype for Alaska Policy Forum'
+          'div',
+          { className: 'flex-row' },
+          _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement('div', { id: 'map', ref: 'map' }),
+            _react2.default.createElement(
+              'p',
+              null,
+              'PEAKS Scores prototype for Alaska Policy Forum'
+            )
+          ),
+          this.displaySchoolStats.bind(this)()
         )
       );
     }

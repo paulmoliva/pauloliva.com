@@ -1,0 +1,12 @@
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.school-display {
+  padding: 10px;
+  margin: 0 auto;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
