@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 const google = window.google;
+import asdData from './asdData';
+import schoolLocations from './asd_lat_lng';
 
 // we need to provide a center coordinate for our map, this is SF
 const mapCenter = { lat: 61.2181, lng: -149.8003 };
@@ -17,7 +19,7 @@ class Map extends React.Component {
 
   constructor(props) {
     super(props);
-    this.addBurritoPlace = this.addBurritoPlace.bind(this);
+    this.addSchool = this.addSchool.bind(this);
     this.state = {
       activeSchool: {
         name: '',
@@ -52,15 +54,18 @@ class Map extends React.Component {
     this.listenForMove();
 
     // we are going to add a map marker for each burrito place now
-    this.props.burritoPlaces.forEach(this.addBurritoPlace);
+    this.props.allSchools.forEach(this.addSchool);
   }
 
-  addBurritoPlace(burritoPlace) {
+  addSchool(burritoPlace) {
     /*
      * we make an instance of the google maps LatLng class, args are
      * (lat, lng)
      */
-    const pos = new google.maps.LatLng(burritoPlace.lat, burritoPlace.lng);
+    const pos = new google.maps.LatLng(
+      schoolLocations[burritoPlace.school_name].lat,
+      schoolLocations[burritoPlace.school_name].lng
+    );
 
     const goldStar = {
       path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
@@ -158,6 +163,6 @@ class Map extends React.Component {
 }
 
 ReactDOM.render(
-  <Map center={mapCenter} burritoPlaces={burritos}/>,
+  <Map center={mapCenter} allSchools={asdData}/>,
   document.getElementById('root')
 );
