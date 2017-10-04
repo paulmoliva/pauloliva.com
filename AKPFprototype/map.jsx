@@ -57,22 +57,32 @@ class Map extends React.Component {
     this.props.allSchools.forEach(this.addSchool);
   }
 
-  addSchool(burritoPlace) {
+  addSchool(theSchool) {
     /*
      * we make an instance of the google maps LatLng class, args are
      * (lat, lng)
      */
     const pos = new google.maps.LatLng(
-      schoolLocations[burritoPlace.school_name].lat,
-      schoolLocations[burritoPlace.school_name].lng
+      schoolLocations[theSchool.school_name].lat,
+      schoolLocations[theSchool.school_name].lng
     );
+
+    const schoolData = this.props.allSchools.filter( el => {
+      console.log(el);
+      return (
+        el.school_name === theSchool.school_name &&
+        el.grade === 'All Grades'
+      );
+    });
+
+    console.log(schoolData);
 
     const goldStar = {
       path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
-      fillColor: burritoPlace.score > 50 ? 'green' : 'red',
+      fillColor: theSchool.score > 50 ? 'green' : 'red',
       fillOpacity: 0.8,
       scale: 0.02,
-      strokeColor: burritoPlace.score > 50 ? 'green' : 'red',
+      strokeColor: theSchool.score > 50 ? 'green' : 'red',
       strokeWeight: 14
   };
 
@@ -90,7 +100,12 @@ class Map extends React.Component {
     });
 
     const infowindow = new google.maps.InfoWindow({
-      content: `Name: ${burritoPlace.name} PEAKS Score: ${burritoPlace.score}`,
+      content: `
+        <div id="${theSchool.school_id}">
+          <p>Name:${theSchool.name}</p>
+          <p>${schoolData[0].subject} Score: ${schoolData[0].perecent_below}</p>
+          <p>${schoolData[1].subject} Score: ${schoolData[1].perecent_below}</p>
+        </div>`,
       maxWidth: 200
     });
 
@@ -102,7 +117,7 @@ class Map extends React.Component {
       this.state.openWindow = infowindow;
       infowindow.open(this.map, marker);
       this.setState({
-        activeSchool: burritoPlace
+        activeSchool: theSchool
       });
     });
   }
