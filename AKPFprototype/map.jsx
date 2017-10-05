@@ -16,7 +16,8 @@ class Map extends React.Component {
     this.addSchool = this.addSchool.bind(this);
     this.state = {
       activeSchool: '',
-      openWindow: null
+      openWindow: null,
+      searchResults: []
     };
   }
 
@@ -142,6 +143,12 @@ class Map extends React.Component {
     );
   }
 
+  searchSchools(searchTerm) {
+    this.setState({
+      searchResults: Object.keys(individualScores).filter( schoolName => schoolName.toLowerCase().includes(searchTerm.toLowerCase()) )
+    });
+  }
+
   render() {
     /*
      * the div that will become the map is just an empty div
@@ -152,6 +159,7 @@ class Map extends React.Component {
      */
     return (
       <div className="container">
+        <input type="text" onKeyup={this.searchSchools.bind(this)} />
         <div className="flex-row">
           <div>
             <div id='map' ref='map'/>

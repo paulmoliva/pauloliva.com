@@ -26729,7 +26729,8 @@ var Map = function (_React$Component) {
     _this.addSchool = _this.addSchool.bind(_this);
     _this.state = {
       activeSchool: '',
-      openWindow: null
+      openWindow: null,
+      searchResults: []
     };
     return _this;
   }
@@ -26886,6 +26887,15 @@ var Map = function (_React$Component) {
       );
     }
   }, {
+    key: 'searchSchools',
+    value: function searchSchools(searchTerm) {
+      this.setState({
+        searchResults: Object.keys(_individual_scores2.default).filter(function (schoolName) {
+          return schoolName.toLowerCase().includes(searchTerm.toLowerCase());
+        })
+      });
+    }
+  }, {
     key: 'render',
     value: function render() {
       /*
@@ -26898,6 +26908,7 @@ var Map = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         { className: 'container' },
+        _react2.default.createElement('input', { type: 'text', onKeyup: this.searchSchools.bind(this) }),
         _react2.default.createElement(
           'div',
           { className: 'flex-row' },
