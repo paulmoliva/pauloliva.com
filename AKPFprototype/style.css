@@ -14,7 +14,7 @@
 .search-results {
   position: absolute;
   z-index: 99;
-  background: grey;
+  background-color: rgba(0,0,0,0.85);
   margin: 0;
 }
 
