@@ -3,16 +3,10 @@ import ReactDOM from 'react-dom';
 const google = window.google;
 import asdData from './asdData';
 import schoolLocations from './asd_lat_lng';
+import individualScores from './individual_scores';
 
-// we need to provide a center coordinate for our map, this is SF
+// we need to provide a center coordinate for our map, this is ANC
 const mapCenter = { lat: 61.2181, lng: -149.8003 };
-
-// I made some lat/lng points for some good burrito spots
-const burritos = [
-  { lat: 61.1439499, lng: -149.8353352, name: "Abbot Loop Elementary", score: 100 },
-  { lat: 61.2070325, lng: -149.8321093, name: "Airport Heights Elementary", score: 50 },
-  { lat: 61.3012132, lng: -149.5267069, name: "Alpenglow Elementary", score: 75 }
-];
 
 // just a normal react component class :)
 class Map extends React.Component {
@@ -21,10 +15,7 @@ class Map extends React.Component {
     super(props);
     this.addSchool = this.addSchool.bind(this);
     this.state = {
-      activeSchool: {
-        name: '',
-        score: ''
-      },
+      activeSchool: '',
       openWindow: null
     };
   }
@@ -50,9 +41,6 @@ class Map extends React.Component {
     // this line actually creates the map and renders it into the DOM
     this.map = new google.maps.Map(map, options);
 
-    // add a movement listener
-    this.listenForMove();
-
     // we are going to add a map marker for each burrito place now
     this.props.allSchools.forEach(this.addSchool);
   }
@@ -67,23 +55,20 @@ class Map extends React.Component {
       schoolLocations[theSchool.school_name].lng
     );
 
-    const schoolData = this.props.allSchools.filter( el => {
-      console.log(el);
-      return (
-        el.school_name === theSchool.school_name &&
-        el.grade === 'All Grades'
-      );
-    });
+    const averageScore = (
+      parseInt(individualScores[theSchool.school_name]["Math"]) +
+      parseInt(individualScores[theSchool.school_name]["ELA"])
+      / 2 );
 
-    console.log(schoolData);
+    console.log(parseInt(individualScores[theSchool.school_name]["Math"]));
 
     const goldStar = {
       path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
-      fillColor: theSchool.score > 50 ? 'green' : 'red',
+      fillColor: averageScore < 50 ? 'green' : 'red',
       fillOpacity: 0.8,
-      scale: 0.02,
-      strokeColor: theSchool.score > 50 ? 'green' : 'red',
-      strokeWeight: 14
+      scale: 0.05,
+      strokeColor: averageScore < 50 ? 'green' : 'red',
+      strokeWeight: 1
   };
 
     /*
@@ -102,9 +87,15 @@ class Map extends React.Component {
     const infowindow = new google.maps.InfoWindow({
       content: `
         <div id="${theSchool.school_id}">
-          <p>Name:${theSchool.name}</p>
-          <p>${schoolData[0].subject} Score: ${schoolData[0].perecent_below}</p>
-          <p>${schoolData[1].subject} Score: ${schoolData[1].perecent_below}</p>
+          <p>Name:${theSchool.school_name}</p>
+          <p>
+            % Below Proficiency in ELA:
+            ${individualScores[theSchool.school_name]["ELA"]}
+          </p>
+          <p>
+            % Below Proficiency in Math:
+            ${individualScores[theSchool.school_name]["Math"]}
+          </p>
         </div>`,
       maxWidth: 200
     });
@@ -117,37 +108,36 @@ class Map extends React.Component {
       this.state.openWindow = infowindow;
       infowindow.open(this.map, marker);
       this.setState({
-        activeSchool: theSchool
+        activeSchool: theSchool.school_name
       });
     });
   }
 
-  listenForMove() {
-    /*
-     * we listen for the map to emit an 'idle' event, it does this when
-     * the map stops moving
-     */
-    google.maps.event.addListener(this.map, 'idle', () => {
-      const bounds = this.map.getBounds();
-      // alert('map has moved, check console to see updated bounds');
-
-      console.log('center',
-        bounds.getCenter().lat(),
-        bounds.getCenter().lng());
-      console.log("north east",
-        bounds.getNorthEast().lat(),
-        bounds.getNorthEast().lng());
-      console.log("south west",
-        bounds.getSouthWest().lat(),
-        bounds.getSouthWest().lng());
-    });
-  }
-
   displaySchoolStats() {
+
+    const generateStatsText = el => {
+      if (el.grade === 'All Grades') {
+        return (
+          <li><p><strong>All Grades {el.subject}:</strong></p> {(Number(el.perecent_below) * 100).toFixed(0)}% below proficient</li>
+        );
+      } else {
+        return (
+          <li><p><strong>Grade {el.grade} {el.subject}:</strong></p> {(Number(el.perecent_below) * 100).toFixed(0)}% below proficient</li>
+        );
+      }
+    };
+
+    const schoolStats = asdData.filter( el => el.school_name === this.state.activeSchool);
+    const statsListArray = [];
+    schoolStats.forEach( el => {
+      statsListArray.push(generateStatsText(el));
+    });
     return (
       <div className="school-display">
-          <p>{this.state.activeSchool.name}</p>
-          <p>{this.state.activeSchool.score}</p>
+          <h2>{this.state.activeSchool}</h2>
+          <ul>
+            {statsListArray}
+          </ul>
       </div>
     );
   }
@@ -166,9 +156,6 @@ class Map extends React.Component {
         <div className="flex-row">
           <div>
             <div id='map' ref='map'/>
-            <p>
-              PEAKS Scores prototype for Alaska Policy Forum
-            </p>
           </div>
           {this.displaySchoolStats.bind(this)()}
         </div>

@@ -2,14 +2,21 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>PEAKS Maps Demo</title>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHRwMjPkCMPcZVJAIhnolPvXeM4u6xM2Q" charset="utf-8"></script>
     <style type="text/css">
       /*setting the width and height of your map element is CRUCIAL*/
       #map {
-        width: 800px;
-        height: 600px;
-      };
+        width: 600px;
+        height: 800px;
+      }
+      @media only screen and (max-width: 500px) {
+        #map {
+          width: 290px;
+          height: 500px;
+        }
+      }
      </style>
      <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
