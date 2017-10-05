@@ -26772,16 +26772,24 @@ var Map = function (_React$Component) {
        */
       var pos = new google.maps.LatLng(_asd_lat_lng2.default[theSchool.school_name].lat, _asd_lat_lng2.default[theSchool.school_name].lng);
 
-      var averageScore = parseInt(_individual_scores2.default[theSchool.school_name]["Math"]) + parseInt(_individual_scores2.default[theSchool.school_name]["ELA"]) / 2;
+      var averageScore = (parseInt(_individual_scores2.default[theSchool.school_name]["Math"]) + parseInt(_individual_scores2.default[theSchool.school_name]["ELA"])) / 2;
 
-      console.log(parseInt(_individual_scores2.default[theSchool.school_name]["Math"]));
+      var determineFillColor = function determineFillColor(score) {
+        if (score < 31) {
+          return 'green';
+        } else if (score < 51) {
+          return 'yellow';
+        } else {
+          return 'red';
+        }
+      };
 
       var goldStar = {
         path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
-        fillColor: averageScore < 50 ? 'green' : 'red',
+        fillColor: determineFillColor(averageScore),
         fillOpacity: 0.8,
         scale: 0.05,
-        strokeColor: averageScore < 50 ? 'green' : 'red',
+        strokeColor: determineFillColor(averageScore),
         strokeWeight: 1
       };
 
@@ -26888,11 +26896,51 @@ var Map = function (_React$Component) {
     }
   }, {
     key: 'searchSchools',
-    value: function searchSchools(searchTerm) {
-      this.setState({
-        searchResults: Object.keys(_individual_scores2.default).filter(function (schoolName) {
-          return schoolName.toLowerCase().includes(searchTerm.toLowerCase());
-        })
+    value: function searchSchools(e) {
+      var searchTerm = e.target.value;
+      if (searchTerm === '') {
+        this.setState({
+          searchResults: []
+        });
+      } else {
+        this.setState({
+          searchResults: Object.keys(_individual_scores2.default).filter(function (schoolName) {
+            return schoolName.toLowerCase().includes(searchTerm.toLowerCase());
+          })
+        });
+      }
+    }
+  }, {
+    key: 'renderSearchResults',
+    value: function renderSearchResults() {
+      var _this4 = this;
+
+      return this.state.searchResults.map(function (el, i) {
+        return _react2.default.createElement(
+          'li',
+          {
+            key: i,
+            style: {
+              fontSize: '18px',
+              padding: '7px 4px'
+            }
+          },
+          _react2.default.createElement(
+            'a',
+            {
+              href: '#',
+              onClick: function onClick(e) {
+                e.preventDefault();
+                _this4.setState({
+                  activeSchool: el,
+                  searchResults: []
+                });
+                document.getElementById('search-bar').value = '';
+              }
+            },
+            el
+          )
+        );
       });
     }
   }, {
@@ -26905,10 +26953,21 @@ var Map = function (_React$Component) {
        * DO NOT FORGET: you must style your map div and give it width + height
        * or else it won't be visible!
        */
+
       return _react2.default.createElement(
         'div',
         { className: 'container' },
-        _react2.default.createElement('input', { type: 'text', onKeyup: this.searchSchools.bind(this) }),
+        _react2.default.createElement('input', {
+          id: 'search-bar',
+          type: 'text',
+          onKeyUp: this.searchSchools.bind(this),
+          placeholder: 'Search'
+        }),
+        _react2.default.createElement(
+          'ul',
+          { className: 'search-results', style: { position: 'absolute' } },
+          this.renderSearchResults.bind(this)()
+        ),
         _react2.default.createElement(
           'div',
           { className: 'flex-row' },

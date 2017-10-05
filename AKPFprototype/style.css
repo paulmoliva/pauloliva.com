@@ -11,12 +11,33 @@
   overflow-y: scroll;
 }
 
+.search-results {
+  position: absolute;
+  z-index: 99;
+  background: grey;
+  margin: 0;
+}
+
 ul {
   list-style: none;
   padding-left: 1px;
 }
 h2 {
   text-align: center;
+}
+
+input {
+  width: 600px;
+  height: 50px;
+  background: #2b303b;
+  border: none;
+  font-size: 10pt;
+  color: #63717f;
+  padding-left: 45px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  box-sizing: border-box;
 }
 
 @media only screen and (max-width: 500px) {
@@ -28,5 +49,8 @@ h2 {
   }
   h2 {
     font-size: 11px;
+  }
+  input {
+    width: 290px;
   }
 }

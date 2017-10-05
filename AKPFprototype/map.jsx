@@ -57,18 +57,28 @@ class Map extends React.Component {
     );
 
     const averageScore = (
-      parseInt(individualScores[theSchool.school_name]["Math"]) +
-      parseInt(individualScores[theSchool.school_name]["ELA"])
+      (
+        parseInt(individualScores[theSchool.school_name]["Math"]) +
+        parseInt(individualScores[theSchool.school_name]["ELA"])
+      )
       / 2 );
 
-    console.log(parseInt(individualScores[theSchool.school_name]["Math"]));
+      const determineFillColor = score => {
+        if (score < 31) {
+          return 'green';
+        } else if (score < 51) {
+          return 'yellow';
+        } else {
+          return 'red';
+        }
+      };
 
     const goldStar = {
       path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
-      fillColor: averageScore < 50 ? 'green' : 'red',
+      fillColor: determineFillColor(averageScore),
       fillOpacity: 0.8,
       scale: 0.05,
-      strokeColor: averageScore < 50 ? 'green' : 'red',
+      strokeColor: determineFillColor(averageScore),
       strokeWeight: 1
   };
 
@@ -143,9 +153,46 @@ class Map extends React.Component {
     );
   }
 
-  searchSchools(searchTerm) {
-    this.setState({
-      searchResults: Object.keys(individualScores).filter( schoolName => schoolName.toLowerCase().includes(searchTerm.toLowerCase()) )
+  searchSchools(e) {
+    const searchTerm = e.target.value;
+    if(searchTerm === ''){
+      this.setState({
+        searchResults: []
+      });
+    } else {
+      this.setState({
+        searchResults: Object.keys(individualScores).filter( schoolName => schoolName.toLowerCase().includes(searchTerm.toLowerCase()) )
+      });
+    }
+  }
+
+
+
+  renderSearchResults() {
+    return this.state.searchResults.map( (el, i) => {
+      return (
+        <li
+          key={i}
+          style={{
+            fontSize: '18px',
+            padding: '7px 4px'
+          }}
+        >
+          <a
+            href="#"
+            onClick={ e => {
+              e.preventDefault();
+              this.setState({
+                activeSchool: el,
+                searchResults: []
+              });
+              document.getElementById('search-bar').value = '';
+            }}
+          >
+            {el}
+          </a>
+        </li>
+      );
     });
   }
 
@@ -157,9 +204,18 @@ class Map extends React.Component {
      * DO NOT FORGET: you must style your map div and give it width + height
      * or else it won't be visible!
      */
+
     return (
       <div className="container">
-        <input type="text" onKeyup={this.searchSchools.bind(this)} />
+        <input
+          id="search-bar"
+          type="text"
+          onKeyUp={this.searchSchools.bind(this)}
+          placeholder="Search"
+        />
+        <ul className="search-results" style={{position: 'absolute'}}>
+          {this.renderSearchResults.bind(this)()}
+        </ul>
         <div className="flex-row">
           <div>
             <div id='map' ref='map'/>
