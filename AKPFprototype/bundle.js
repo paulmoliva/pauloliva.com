@@ -26899,11 +26899,6 @@ var Map = function (_React$Component) {
         'div',
         { className: 'container' },
         _react2.default.createElement(
-          'span',
-          null,
-          'MAP DEMO'
-        ),
-        _react2.default.createElement(
           'div',
           { className: 'flex-row' },
           _react2.default.createElement(

@@ -152,7 +152,6 @@ class Map extends React.Component {
      */
     return (
       <div className="container">
-        <span>MAP DEMO</span>
         <div className="flex-row">
           <div>
             <div id='map' ref='map'/>
