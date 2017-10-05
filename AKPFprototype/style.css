@@ -7,8 +7,14 @@
   padding: 10px;
   margin: 0 auto;
   font-size: 18px;
-  height: 775px;
+  height: 707px;
+  min-height: 707px;
+  min-width: 290px;
   overflow-y: scroll;
+  background-color: rgb(59,101,61);
+  color: whitesmoke;
+  font-family: 'Lato', sans-serif;
+  box-sizing: border-box;
 }
 
 .search-results {
@@ -16,6 +22,13 @@
   z-index: 99;
   background-color: rgba(0,0,0,0.85);
   margin: 0;
+}
+
+.logo {
+  position: fixed;
+  right: 8px;
+  top: 8px;
+  height: 50px;
 }
 
 ul {
@@ -40,15 +53,28 @@ input {
   box-sizing: border-box;
 }
 
+body {
+  background-image: url('./desk.jpg');
+}
+
 @media only screen and (max-width: 500px) {
   .school-display {
       font-size: 9px;
-      height: 500px;
+      height: 482px;
+      min-height: 482px;
+      min-width: 140px;
       overflow-y: scroll;
       padding: 2px;
+      margin: 0 auto;
+      text-align: center;
+
+  }
+  .logo {
+    right: 10px;
+    width: 174px;
   }
   h2 {
-    font-size: 11px;
+    font-size: 9px;
   }
   input {
     width: 290px;

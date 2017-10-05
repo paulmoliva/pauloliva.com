@@ -26964,6 +26964,14 @@ var Map = function (_React$Component) {
           placeholder: 'Search'
         }),
         _react2.default.createElement(
+          'a',
+          { href: 'http://alaskapolicyforum.org/', target: '_blank' },
+          _react2.default.createElement('img', {
+            src: 'akpf_logo.png',
+            className: 'logo'
+          })
+        ),
+        _react2.default.createElement(
           'ul',
           { className: 'search-results', style: { position: 'absolute' } },
           this.renderSearchResults.bind(this)()

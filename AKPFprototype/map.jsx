@@ -213,6 +213,12 @@ class Map extends React.Component {
           onKeyUp={this.searchSchools.bind(this)}
           placeholder="Search"
         />
+      <a href="http://alaskapolicyforum.org/" target="_blank">
+          <img
+            src="akpf_logo.png"
+            className="logo"
+          />
+        </a>
         <ul className="search-results" style={{position: 'absolute'}}>
           {this.renderSearchResults.bind(this)()}
         </ul>
