@@ -31,6 +31,38 @@
   height: 50px;
 }
 
+.white-link {
+  color: whitesmoke;
+}
+
+.stats-key {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  bottom: 10px;
+  left: 8px;
+  background-color: rgba(7,7,7,0.5);
+  color: whitesmoke;
+}
+
+.key-box {
+  min-width: 10px;
+  min-height: 10px;
+  display: inline-block;
+  margin-right: 5px;
+  padding: 7px;
+}
+
+.key-text {
+  display: inline;
+}
+
+.stats-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2px;
+}
+
 ul {
   list-style: none;
   padding-left: 1px;
@@ -61,7 +93,7 @@ body {
   .school-display {
       font-size: 9px;
       height: 482px;
-      min-height: 482px;
+      min-height: 571px;
       min-width: 140px;
       overflow-y: scroll;
       padding: 2px;
@@ -72,6 +104,9 @@ body {
   .logo {
     right: 10px;
     width: 174px;
+  }
+  .key-box {
+    min-width: 0px;
   }
   h2 {
     font-size: 9px;

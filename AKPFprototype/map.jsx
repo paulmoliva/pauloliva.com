@@ -124,16 +124,46 @@ class Map extends React.Component {
     });
   }
 
-  displaySchoolStats() {
+  processSubject(subject){
+    if (subject === 'ELA') {
+      return 'English - Language Arts';
+    } else {
+      return subject;
+    }
+  }
 
+  processNumericalScore(scoreString){
+    if(scoreString === '0') {
+      return 'N/A';
+    }
+    let numericalScore = Number(scoreString);
+    if (numericalScore < 1) {
+      numericalScore = (numericalScore * 100).toFixed(0);
+    } else if (numericalScore === 0) {
+      numericalScore = 'N/A';
+    }
+    const returnString = String(numericalScore) + '% below proficient';
+    return returnString;
+  }
+
+  displaySchoolStats() {
     const generateStatsText = el => {
       if (el.grade === 'All Grades') {
         return (
-          <li><p><strong>All Grades {el.subject}:</strong></p> {(Number(el.perecent_below) * 100).toFixed(0)}% below proficient</li>
+          <li style={{
+              'border': '1px solid white',
+              'paddingBottom': '22px',
+              'marginTop': '20px',
+              'textAlign': 'center'
+            }}>
+            <p><strong>All Grades {this.processSubject(el.subject)}:</strong></p> {this.processNumericalScore(el.perecent_below)}
+          </li>
         );
       } else {
         return (
-          <li><p><strong>Grade {el.grade} {el.subject}:</strong></p> {(Number(el.perecent_below) * 100).toFixed(0)}% below proficient</li>
+          <li>
+            <p>Grade {el.grade} {this.processSubject(el.subject)}:</p> {this.processNumericalScore(el.perecent_below)}
+          </li>
         );
       }
     };
@@ -143,8 +173,25 @@ class Map extends React.Component {
     schoolStats.forEach( el => {
       statsListArray.push(generateStatsText(el));
     });
+    if (this.state.activeSchool === '') {
+      return (
+        <div className="school-display">
+            <h1>2017 ASD Peaks Data</h1>
+            <p>
+              Welcome to the Alaska Policy Forum Interactive PEAKS Data Map
+            </p>
+            <p>
+              Click a star on the map to view test scores for that school.
+            </p>
+            <p>
+              Alternatively, type a school name into the search bar and click the corresponding search result.
+            </p>
+        </div>
+      );
+    }
     return (
       <div className="school-display">
+          <h1>2017 ASD Peaks Data</h1>
           <h2>{this.state.activeSchool}</h2>
           <ul>
             {statsListArray}
@@ -172,14 +219,16 @@ class Map extends React.Component {
     return this.state.searchResults.map( (el, i) => {
       return (
         <li
+          className="search-result-li"
           key={i}
           style={{
-            fontSize: '18px',
+            fontSize: '24px',
             padding: '7px 4px'
           }}
         >
           <a
             href="#"
+            className="white-link"
             onClick={ e => {
               e.preventDefault();
               this.setState({
@@ -227,6 +276,20 @@ class Map extends React.Component {
             <div id='map' ref='map'/>
           </div>
           {this.displaySchoolStats.bind(this)()}
+        </div>
+        <div className="stats-key">
+          <div className="stats-row">
+            <div className="key-box" style={{"backgroundColor": "green"}} />
+            <p className="key-text">0-30% below proficiency</p>
+          </div>
+          <div className="stats-row">
+            <div className="key-box" style={{"backgroundColor": "yellow"}} />
+            <p className="key-text">31-50% below proficiency</p>
+          </div>
+          <div className="stats-row">
+            <div className="key-box" style={{"backgroundColor": "red"}} />
+            <p className="key-text">51-100% below proficiency</p>
+          </div>
         </div>
       </div>
     );
