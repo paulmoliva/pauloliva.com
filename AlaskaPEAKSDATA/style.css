@@ -1,0 +1,117 @@
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.school-display {
+  padding: 10px;
+  margin: 0 auto;
+  font-size: 18px;
+  height: 707px;
+  min-height: 707px;
+  min-width: 290px;
+  overflow-y: scroll;
+  background-color: rgb(59,101,61);
+  color: whitesmoke;
+  font-family: 'Lato', sans-serif;
+  box-sizing: border-box;
+}
+
+.search-results {
+  position: absolute;
+  z-index: 99;
+  background-color: rgba(0,0,0,0.85);
+  margin: 0;
+}
+
+.logo {
+  position: fixed;
+  right: 8px;
+  top: 8px;
+  height: 50px;
+}
+
+.white-link {
+  color: whitesmoke;
+}
+
+.stats-key {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  bottom: 10px;
+  left: 8px;
+  background-color: rgba(7,7,7,0.5);
+  color: whitesmoke;
+}
+
+.key-box {
+  min-width: 10px;
+  min-height: 10px;
+  display: inline-block;
+  margin-right: 5px;
+  padding: 7px;
+}
+
+.key-text {
+  display: inline;
+}
+
+.stats-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2px;
+}
+
+ul {
+  list-style: none;
+  padding-left: 1px;
+}
+h2 {
+  text-align: center;
+}
+
+input {
+  width: 600px;
+  height: 50px;
+  background: #2b303b;
+  border: none;
+  font-size: 10pt;
+  color: #63717f;
+  padding-left: 45px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url('./desk.jpg');
+}
+
+@media only screen and (max-width: 500px) {
+  .school-display {
+      font-size: 9px;
+      height: 482px;
+      min-height: 571px;
+      min-width: 140px;
+      overflow-y: scroll;
+      padding: 2px;
+      margin: 0 auto;
+      text-align: center;
+
+  }
+  .logo {
+    right: 10px;
+    width: 174px;
+  }
+  .key-box {
+    min-width: 0px;
+  }
+  h2 {
+    font-size: 9px;
+  }
+  input {
+    width: 290px;
+  }
+}
