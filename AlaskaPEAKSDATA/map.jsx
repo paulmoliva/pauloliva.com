@@ -51,6 +51,10 @@ class Map extends React.Component {
      * we make an instance of the google maps LatLng class, args are
      * (lat, lng)
      */
+
+    if (!schoolLocations[theSchool.school_name]) {
+      return '';
+    }
     const pos = new google.maps.LatLng(
       schoolLocations[theSchool.school_name].lat,
       schoolLocations[theSchool.school_name].lng

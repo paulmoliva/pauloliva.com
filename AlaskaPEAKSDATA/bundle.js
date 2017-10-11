@@ -10531,6 +10531,10 @@ var Map = function (_React$Component) {
        * we make an instance of the google maps LatLng class, args are
        * (lat, lng)
        */
+
+      if (!_alaska_lat_lng2.default[theSchool.school_name]) {
+        return '';
+      }
       var pos = new google.maps.LatLng(_alaska_lat_lng2.default[theSchool.school_name].lat, _alaska_lat_lng2.default[theSchool.school_name].lng);
 
       var averageScore = (parseInt(_individual_scores2.default[theSchool.school_name]["Math"]) + parseInt(_individual_scores2.default[theSchool.school_name]["ELA"])) / 2;
