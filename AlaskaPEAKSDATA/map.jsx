@@ -6,7 +6,7 @@ import schoolLocations from './alaska_lat_lng';
 import individualScores from './individual_scores';
 
 // we need to provide a center coordinate for our map, this is ANC
-const mapCenter = { lat: 61.2181, lng: -149.8003 };
+const mapCenter = { lat: 61.5847536, lng: -149.432754 };
 
 // just a normal react component class :)
 class Map extends React.Component {
@@ -143,8 +143,8 @@ class Map extends React.Component {
     let numericalScore = Number(scoreString);
     if (numericalScore < 1) {
       numericalScore = (numericalScore * 100).toFixed(0);
-    } else if (numericalScore === 0) {
-      numericalScore = 'N/A';
+    } else if (numericalScore === 0 || isNaN(numericalScore)) {
+      return 'N/A';
     }
     const returnString = String(numericalScore) + '% below proficient';
     return returnString;
@@ -160,13 +160,13 @@ class Map extends React.Component {
               'marginTop': '20px',
               'textAlign': 'center'
             }}>
-            <p><strong>All Grades {this.processSubject(el.subject)}:</strong></p> {this.processNumericalScore(el.perecent_below)}
+            <p><strong>All Grades {this.processSubject(el.subject)}:</strong></p> {this.processNumericalScore(el.percent_below)}
           </li>
         );
       } else {
         return (
           <li>
-            <p>Grade {el.grade} {this.processSubject(el.subject)}:</p> {this.processNumericalScore(el.perecent_below)}
+            <p>Grade {el.grade} {this.processSubject(el.subject)}:</p> {this.processNumericalScore(el.percent_below)}
           </li>
         );
       }
