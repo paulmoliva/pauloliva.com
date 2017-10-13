@@ -26955,9 +26955,12 @@ var Map = function (_React$Component) {
       var numericalScore = Number(scoreString);
       if (numericalScore < 1) {
         numericalScore = (numericalScore * 100).toFixed(0);
+      } else if (numericalScore > 1) {
+        return String(numericalScore + '% or more below proficient');
       } else if (numericalScore === 0) {
         numericalScore = 'N/A';
       }
+
       var returnString = String(numericalScore) + '% below proficient';
       return returnString;
     }
