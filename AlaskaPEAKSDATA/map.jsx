@@ -143,8 +143,10 @@ class Map extends React.Component {
     let numericalScore = Number(scoreString);
     if (numericalScore < 1) {
       numericalScore = (numericalScore * 100).toFixed(0);
-    } else if (numericalScore === 0 || isNaN(numericalScore)) {
+    } else if (numericalScore === 0 || scoreString === '*') {
       return 'N/A';
+    } else if (isNaN(numericalScore)) {
+      return scoreString + ' % below proficient.';
     }
     const returnString = String(numericalScore) + '% below proficient';
     return returnString;
