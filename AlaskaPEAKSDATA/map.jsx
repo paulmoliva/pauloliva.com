@@ -182,7 +182,7 @@ class Map extends React.Component {
     if (this.state.activeSchool === '') {
       return (
         <div className="school-display">
-            <h1>2017 ASD Peaks Data</h1>
+            <h1>2017 Alaska Statewide Peaks Data</h1>
             <p>
               Welcome to the Alaska Policy Forum Interactive PEAKS Data Map
             </p>

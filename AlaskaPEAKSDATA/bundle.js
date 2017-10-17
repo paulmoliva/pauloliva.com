@@ -10676,7 +10676,7 @@ var Map = function (_React$Component) {
           _react2.default.createElement(
             'h1',
             null,
-            '2017 ASD Peaks Data'
+            '2017 Alaska Statewide Peaks Data'
           ),
           _react2.default.createElement(
             'p',
