@@ -10850,7 +10850,7 @@ var Map = function (_React$Component) {
         ),
         _react2.default.createElement(
           'p',
-          { 'class': 'na-key' },
+          { className: 'na-text' },
           'N/A: Did not test or too few students to report.'
         )
       );
