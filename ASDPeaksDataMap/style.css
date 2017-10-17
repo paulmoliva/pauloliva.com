@@ -5,6 +5,7 @@
 
 .school-display {
   padding: 10px;
+
   margin: 0 auto;
   font-size: 18px;
   height: 707px;
@@ -63,6 +64,16 @@
   margin-bottom: 2px;
 }
 
+.na-text {
+  background-color: rgba(7,7,7,0.5);
+  color: whitesmoke;
+  padding: 0;
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  margin: 0;
+}
+
 ul {
   list-style: none;
   padding-left: 1px;
@@ -77,12 +88,25 @@ input {
   background: #2b303b;
   border: none;
   font-size: 10pt;
-  color: #63717f;
+  color: whitesmoke;
   padding-left: 45px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
   box-sizing: border-box;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: whitesmoke;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: whitesmoke;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: whitesmoke;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: whitesmoke;
 }
 
 body {
@@ -108,6 +132,11 @@ body {
   .key-box {
     min-width: 0px;
   }
+
+  .na-text {
+    display: none;
+  }
+
   h2 {
     font-size: 9px;
   }

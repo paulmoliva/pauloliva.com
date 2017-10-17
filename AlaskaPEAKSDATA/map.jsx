@@ -190,6 +190,9 @@ class Map extends React.Component {
               Click a star on the map to view test scores for that school.
             </p>
             <p>
+              Click the + or - on the map to zoom in and out.
+            </p>
+            <p>
               Alternatively, type a school name into the search bar and click the corresponding search result.
             </p>
         </div>
@@ -297,6 +300,9 @@ class Map extends React.Component {
             <p className="key-text">51-100% below proficiency</p>
           </div>
         </div>
+        <p className="na-text">
+          N/A: Did not test or too few students to report.
+        </p>
       </div>
     );
   }

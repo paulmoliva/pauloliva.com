@@ -10691,6 +10691,11 @@ var Map = function (_React$Component) {
           _react2.default.createElement(
             'p',
             null,
+            'Click the + or - on the map to zoom in and out.'
+          ),
+          _react2.default.createElement(
+            'p',
+            null,
             'Alternatively, type a school name into the search bar and click the corresponding search result.'
           )
         );
@@ -10842,6 +10847,11 @@ var Map = function (_React$Component) {
               '51-100% below proficiency'
             )
           )
+        ),
+        _react2.default.createElement(
+          'p',
+          { 'class': 'na-key' },
+          'N/A: Did not test or too few students to report.'
         )
       );
     }
