@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 const google = window.google;
-import alaskaData from './alaska_data';
-import schoolLocations from './alaska_lat_lng';
-import individualScores from './individual_scores';
+import {alaskaData} from './all_peaks';
+import schoolLocations from './asd_lat_lng';
+import {individualScores} from './indiv_scores_2018';
 
 // we need to provide a center coordinate for our map, this is ANC
 const mapCenter = { lat: 61.5847536, lng: -149.432754 };
@@ -141,8 +141,8 @@ class Map extends React.Component {
       return 'N/A';
     }
     let numericalScore = Number(scoreString);
-    if (numericalScore < 1) {
-      numericalScore = (numericalScore * 100).toFixed(0);
+    if (numericalScore < 100) {
+      numericalScore = (numericalScore).toFixed(0);
     } else if (numericalScore === 0 || scoreString === '*') {
       return 'N/A';
     } else if (isNaN(numericalScore)) {
@@ -182,7 +182,7 @@ class Map extends React.Component {
     if (this.state.activeSchool === '') {
       return (
         <div className="school-display">
-            <h1>2017 Alaska Statewide Peaks Data</h1>
+            <h1>2018 Alaska Statewide Peaks Data</h1>
             <p>
               Welcome to the Alaska Policy Forum Interactive PEAKS Data Map
             </p>
@@ -200,7 +200,7 @@ class Map extends React.Component {
     }
     return (
       <div className="school-display">
-          <h1>2017 ASD Peaks Data</h1>
+          <h1>2018 Alaska Statewide Peaks Data</h1>
           <h2>{this.state.activeSchool}</h2>
           <ul>
             {statsListArray}
@@ -309,6 +309,6 @@ class Map extends React.Component {
 }
 
 ReactDOM.render(
-  <Map center={mapCenter} allSchools={alaskaData}/>,
+  <Map center={mapCenter} allSchools={alaskaData.filter(school => school.District_Name !== 'Anchorage School District')}/>,
   document.getElementById('root')
 );

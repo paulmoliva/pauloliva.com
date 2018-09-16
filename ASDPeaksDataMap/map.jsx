@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 const google = window.google;
-import asdData from './asdData';
 import schoolLocations from './asd_lat_lng';
-import individualScores from './individual_scores';
+import {allPeaks} from './all_peaks';
+import {indivScores2018} from './indiv_scores_2018';
 
 // we need to provide a center coordinate for our map, this is ANC
 const mapCenter = { lat: 61.2181, lng: -149.8003 };
@@ -58,8 +58,8 @@ class Map extends React.Component {
 
     const averageScore = (
       (
-        parseInt(individualScores[theSchool.school_name]["Math"]) +
-        parseInt(individualScores[theSchool.school_name]["ELA"])
+        parseInt(indivScores2018[theSchool.school_name]["Math"]) +
+        parseInt(indivScores2018[theSchool.school_name]["ELA"])
       )
       / 2 );
 
@@ -97,15 +97,15 @@ class Map extends React.Component {
 
     const infowindow = new google.maps.InfoWindow({
       content: `
-        <div id="${theSchool.school_id}">
+        <div>
           <p>Name:${theSchool.school_name}</p>
           <p>
             % Below Proficiency in ELA:
-            ${individualScores[theSchool.school_name]["ELA"]}
+            ${indivScores2018[theSchool.school_name]["ELA"]}
           </p>
           <p>
             % Below Proficiency in Math:
-            ${individualScores[theSchool.school_name]["Math"]}
+            ${indivScores2018[theSchool.school_name]["Math"]}
           </p>
         </div>`,
       maxWidth: 200
@@ -137,9 +137,9 @@ class Map extends React.Component {
       return 'N/A';
     }
     let numericalScore = Number(scoreString);
-    if (numericalScore < 1) {
-      numericalScore = (numericalScore * 100).toFixed(0);
-    } else if (numericalScore > 1) {
+    if (numericalScore < 100) {
+      numericalScore = (numericalScore).toFixed(0);
+    } else if (numericalScore > 100) {
       return String(numericalScore + '% or more below proficient');
     } else if (numericalScore === 0) {
       numericalScore = 'N/A';
@@ -171,7 +171,7 @@ class Map extends React.Component {
       }
     };
 
-    const schoolStats = asdData.filter( el => el.school_name === this.state.activeSchool);
+    const schoolStats = allPeaks.filter( el => el.school_name === this.state.activeSchool);
     const statsListArray = [];
     schoolStats.forEach( el => {
       statsListArray.push(generateStatsText(el));
@@ -179,7 +179,7 @@ class Map extends React.Component {
     if (this.state.activeSchool === '') {
       return (
         <div className="school-display">
-            <h1>2017 ASD Peaks Data</h1>
+            <h1>2018 ASD Peaks Data</h1>
             <p>
               Welcome to the Alaska Policy Forum Interactive PEAKS Data Map
             </p>
@@ -197,7 +197,7 @@ class Map extends React.Component {
     }
     return (
       <div className="school-display">
-          <h1>2017 ASD Peaks Data</h1>
+          <h1>2018 ASD Peaks Data</h1>
           <h2>{this.state.activeSchool}</h2>
           <ul>
             {statsListArray}
@@ -214,7 +214,7 @@ class Map extends React.Component {
       });
     } else {
       this.setState({
-        searchResults: Object.keys(individualScores).filter( schoolName => schoolName.toLowerCase().includes(searchTerm.toLowerCase()) )
+        searchResults: Object.keys(indivScores2018).filter( schoolName => schoolName.toLowerCase().includes(searchTerm.toLowerCase()) )
       });
     }
   }
@@ -306,6 +306,6 @@ class Map extends React.Component {
 }
 
 ReactDOM.render(
-  <Map center={mapCenter} allSchools={asdData}/>,
+  <Map center={mapCenter} allSchools={allPeaks.filter(school => school.District_Name === 'Anchorage School District')}/>,
   document.getElementById('root')
 );
