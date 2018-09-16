@@ -9964,7 +9964,6 @@ var Map = function (_React$Component) {
                   // activeSchool: el,
                   searchResults: []
                 });
-                console.log(el);
                 google.maps.event.trigger(window[el], 'click');
                 document.getElementById('search-bar').value = '';
               }
