@@ -9804,17 +9804,16 @@ var Map = function (_React$Component) {
   }, {
     key: 'processNumericalScore',
     value: function processNumericalScore(scoreString) {
-      if (scoreString === '0') {
+      if (scoreString === '0' || scoreString === '*') {
         return 'N/A';
       }
       var numericalScore = Number(scoreString);
       if (numericalScore < 100) {
         numericalScore = numericalScore.toFixed(0);
-      } else if (numericalScore === 0 || scoreString === '*') {
-        return 'N/A';
-      } else if (isNaN(numericalScore)) {
-        return scoreString + ' % below proficient.';
+      } else if (scoreString.indexOf('or more') > -1 || scoreString.indexOf('or fewer') > -1) {
+        return scoreString + ' percent below proficient';
       }
+
       var returnString = String(numericalScore) + '% below proficient';
       return returnString;
     }
