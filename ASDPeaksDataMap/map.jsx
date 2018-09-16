@@ -116,12 +116,18 @@ class Map extends React.Component {
       if(this.state.openWindow) {
         this.state.openWindow.close();
       }
-      this.state.openWindow = infowindow;
+      this.setState({openWindow:infowindow});
       infowindow.open(this.map, marker);
       this.setState({
         activeSchool: theSchool.school_name
       });
+      const center = new google.maps.LatLng(
+        marker.position.lat(),
+        marker.position.lng()
+      );
+      this.map.panTo(center);
     });
+    window[theSchool.school_name] = marker;
   }
 
   processSubject(subject){
@@ -238,9 +244,11 @@ class Map extends React.Component {
             onClick={ e => {
               e.preventDefault();
               this.setState({
-                activeSchool: el,
+                // activeSchool: el,
                 searchResults: []
               });
+              console.log(el);
+              google.maps.event.trigger(window[el], 'click');
               document.getElementById('search-bar').value = '';
             }}
           >
