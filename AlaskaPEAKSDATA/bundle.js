@@ -9714,7 +9714,7 @@ var Map = function (_React$Component) {
        */
       var options = {
         center: this.props.center,
-        zoom: 10
+        zoom: 5
       };
 
       // this line actually creates the map and renders it into the DOM
