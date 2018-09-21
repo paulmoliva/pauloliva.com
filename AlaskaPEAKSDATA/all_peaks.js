@@ -1,4 +1,4 @@
-export const alaskaData = [
+module.exports = [
  {
    "District_Name": "Alaska Gateway School District",
    "school_name": "Alaska REACH Academy",

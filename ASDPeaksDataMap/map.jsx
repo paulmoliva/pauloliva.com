@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 const google = window.google;
 import schoolLocations from './asd_lat_lng';
-import {allPeaks} from './all_peaks';
 import {indivScores2018} from './indiv_scores_2018';
 
 // we need to provide a center coordinate for our map, this is ANC
@@ -175,7 +174,7 @@ class Map extends React.Component {
       }
     };
 
-    const schoolStats = allPeaks.filter( el => el.school_name === this.state.activeSchool);
+    const schoolStats = Object.keys(indivScores2018).map(ol);
     const statsListArray = [];
     schoolStats.forEach( el => {
       statsListArray.push(generateStatsText(el));
@@ -311,6 +310,6 @@ class Map extends React.Component {
 }
 
 ReactDOM.render(
-  <Map center={mapCenter} allSchools={allPeaks.filter(school => school.District_Name === 'Anchorage School District')}/>,
+  <Map center={mapCenter} allSchools={Object.keys(indivScores2018).map()}/>,
   document.getElementById('root')
 );

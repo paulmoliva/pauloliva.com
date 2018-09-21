@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import axios from 'axios';
 const google = window.google;
-import {alaskaData} from './all_peaks';
 import schoolLocations from './asd_lat_lng';
 import {individualScores} from './indiv_scores_2018';
+import allSchoolNames from './allSchoolNames';
 
 // we need to provide a center coordinate for our map, this is ANC
 const mapCenter = { lat: 61.5847536, lng: -149.432754 };
@@ -16,10 +17,16 @@ class Map extends React.Component {
     this.addSchool = this.addSchool.bind(this);
     this.state = {
       activeSchool: '',
+      loadedSchool: null,
       openWindow: null,
-      searchResults: []
+      searchResults: [],
+      statsListArray: []
     };
   }
+
+  // shouldComponentUpdate(nextProps, nextState){
+  //   return (this.state.loadedSchool === null) || (nextState.loadedSchool !== this.state.loadedSchool);
+  // }
 
   componentDidMount() {
     /*
@@ -43,7 +50,7 @@ class Map extends React.Component {
     this.map = new google.maps.Map(map, options);
 
     // we are going to add a map marker for each burrito place now
-    this.props.allSchools.forEach(this.addSchool);
+    allSchoolNames.forEach(this.addSchool);
   }
 
   addSchool(theSchool) {
@@ -52,18 +59,18 @@ class Map extends React.Component {
      * (lat, lng)
      */
 
-    if (!schoolLocations[theSchool.school_name]) {
+    if (!schoolLocations[theSchool]) {
       return '';
     }
     const pos = new google.maps.LatLng(
-      schoolLocations[theSchool.school_name].lat,
-      schoolLocations[theSchool.school_name].lng
+      schoolLocations[theSchool].lat,
+      schoolLocations[theSchool].lng
     );
 
     const averageScore = (
       (
-        parseInt(individualScores[theSchool.school_name]["Math"]) +
-        parseInt(individualScores[theSchool.school_name]["ELA"])
+        parseInt(individualScores[theSchool]["Math"]) +
+        parseInt(individualScores[theSchool]["ELA"])
       )
       / 2 );
 
@@ -102,14 +109,14 @@ class Map extends React.Component {
     const infowindow = new google.maps.InfoWindow({
       content: `
         <div id="${theSchool.school_id}">
-          <p>Name:${theSchool.school_name}</p>
+          <p>Name:${theSchool}</p>
           <p>
             % Below Proficiency in ELA:
-            ${individualScores[theSchool.school_name]["ELA"]}
+            ${individualScores[theSchool]["ELA"]}
           </p>
           <p>
             % Below Proficiency in Math:
-            ${individualScores[theSchool.school_name]["Math"]}
+            ${individualScores[theSchool]["Math"]}
           </p>
         </div>`,
       maxWidth: 200
@@ -123,15 +130,16 @@ class Map extends React.Component {
       this.setState({openWindow:infowindow});
       infowindow.open(this.map, marker);
       this.setState({
-        activeSchool: theSchool.school_name
+        activeSchool: theSchool
       });
+      this.fetchScores().bind(this);
       const center = new google.maps.LatLng(
         marker.position.lat(),
         marker.position.lng()
       );
       this.map.panTo(center);
     });
-    window[theSchool.school_name] = marker;
+    window[theSchool] = marker;
   }
 
   processSubject(subject){
@@ -146,73 +154,89 @@ class Map extends React.Component {
     if(scoreString === '0' || scoreString === '*') {
       return 'N/A';
     }
-    let numericalScore = Number(scoreString);
-    if (numericalScore < 100) {
-      numericalScore = (numericalScore).toFixed(0);
-    } else if (scoreString.indexOf('or more') > -1 || scoreString.indexOf('or fewer') > -1) {
+    if (scoreString.indexOf('or more') > -1 || scoreString.indexOf('or fewer') > -1) {
       return scoreString + ' percent below proficient';
     }
 
-    const returnString = String(numericalScore) + '% below proficient';
+    const returnString = scoreString + ' below proficient';
     return returnString;
   }
 
-  displaySchoolStats() {
+  fetchScores(){
     const generateStatsText = el => {
       if (el.grade === 'All Grades') {
         return (
-          <li style={{
-              'border': '1px solid white',
-              'paddingBottom': '22px',
-              'marginTop': '20px',
-              'textAlign': 'center'
-            }}>
-            <p><strong>All Grades {this.processSubject(el.subject)}:</strong></p> {this.processNumericalScore(el.percent_below)}
+          <li
+            key={`${el.school_name}-${el.grade}`}
+            style={{
+            'border': '1px solid white',
+            'paddingBottom': '22px',
+            'marginTop': '20px',
+            'textAlign': 'center'
+          }}>
+            <p><strong>All Grades {this.processSubject(el.Subject)}:</strong></p> {this.processNumericalScore(el.NotProficientPercent)}
           </li>
         );
       } else {
         return (
           <li>
-            <p>Grade {el.grade} {this.processSubject(el.subject)}:</p> {this.processNumericalScore(el.percent_below)}
+            <p>Grade {el.grade} {this.processSubject(el.Subject)}:</p> {this.processNumericalScore(el.NotProficientPercent)}
           </li>
         );
       }
     };
+    if(this.state.activeSchool !== '' && this.state.activeSchool !== this.state.loadedSchool) {
+      this.setState({
+        loading: true,
+      });
+      axios.get(`http://payroll.alaskapolicyforum.org/peaks/${this.state.activeSchool}`)
+      .then(schoolStats => {
+        const statsListArray = [];
+        schoolStats.data.forEach(el => {
+          statsListArray.push(generateStatsText(el));
+        });
+        this.setState({
+          statsListArray,
+          loading: false,
+          loadedSchool: this.state.activeSchool,
+        });
+      });
+    }
+  }
 
-    const schoolStats = alaskaData.filter( el => el.school_name === this.state.activeSchool);
-    const statsListArray = [];
-    schoolStats.forEach( el => {
-      statsListArray.push(generateStatsText(el));
-    });
-    if (this.state.activeSchool === '') {
+  displaySchoolStats() {
+
+
+    if ((this.state.activeSchool === '')) {
       return (
         <div className="school-display">
-            <h1>2018 Alaska Statewide Peaks Data</h1>
-            <p>
-              Welcome to the Alaska Policy Forum Interactive PEAKS Data Map
-            </p>
-            <p>
-              Click a star on the map to view test scores for that school.
-            </p>
-            <p>
-              Click the + or - on the map to zoom in and out.
-            </p>
-            <p>
-              Alternatively, type a school name into the search bar and click the corresponding search result.
-            </p>
+          <h1>2018 Alaska Statewide Peaks Data</h1>
+          <p>
+            Welcome to the Alaska Policy Forum Interactive PEAKS Data Map
+          </p>
+          <p>
+            Click a star on the map to view test scores for that school.
+          </p>
+          <p>
+            Click the + or - on the map to zoom in and out.
+          </p>
+          <p>
+            Alternatively, type a school name into the search bar and click the corresponding search result.
+          </p>
         </div>
       );
     }
     return (
       <div className="school-display">
-          <h1>2018 Alaska Statewide Peaks Data</h1>
-          <h2>{this.state.activeSchool}</h2>
-          <ul>
-            {statsListArray}
-          </ul>
+        <h1>2018 Alaska Statewide Peaks Data</h1>
+        <h2>{this.state.activeSchool}</h2>
+        <ul>
+          {this.state.loading ? <li>Loading data for {this.state.activeSchool}</li> : this.state.statsListArray}
+        </ul>
       </div>
     );
   }
+
 
   searchSchools(e) {
     const searchTerm = e.target.value;
@@ -318,6 +342,6 @@ class Map extends React.Component {
 }
 
 ReactDOM.render(
-  <Map center={mapCenter} allSchools={alaskaData.filter(school => school.District_Name !== 'Anchorage School District')}/>,
+  <Map center={mapCenter}/>,
   document.getElementById('root')
 );
